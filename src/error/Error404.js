@@ -1,9 +1,10 @@
 import React from "react";
 import { withStyles, Grid, Typography } from "@material-ui/core";
-import { Link } from "react-router-dom";
 
 const styles = (theme) => ({
-    root: {},
+    root: {
+        marginBottom: 100,
+    },
     image: {
         marginTop: 120,
         width: 600,
@@ -31,7 +32,7 @@ function Error404(props) {
     const { classes } = props;
     return (
         <Grid container={true} justify="center" className={classes.root}>
-            <Grid item={true} lg={6}>
+            <Grid item={true} xs={12} lg={6}>
                 <img
                     className={classes.image}
                     src="assets/images/404.png"
@@ -53,10 +54,6 @@ function Error404(props) {
                     The page you are looking for may have been removed or moved
                     to another location.
                 </Typography>
-
-                <Link className={classes.link} to="/analytics">
-                    Go back to analytics
-                </Link>
             </Grid>
         </Grid>
     );

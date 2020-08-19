@@ -1,8 +1,8 @@
 import React from "react";
 import { AppBar, Button, Toolbar, makeStyles } from "@material-ui/core";
 import { withRouter } from "react-router-dom";
-import clsx from "clsx";
 import Box from "@material-ui/core/Box";
+import MainDrawer from "./MainDrawer";
 
 const useStyles = makeStyles((theme) => ({
     logoButton: {
@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: 0,
     },
     appBar: {
-        margin: 0,
         zIndex: theme.zIndex.drawer + 1,
         transition: theme.transitions.create(["width", "margin"], {
             easing: theme.transitions.easing.sharp,
@@ -20,23 +19,13 @@ const useStyles = makeStyles((theme) => ({
         color: theme.palette.primary,
         background: "white",
     },
-    button: {
-        padding: 16,
-        borderRadius: 0,
-    },
-    action: {
-        paddingLeft: 16,
-        paddingRight: 16,
-        marginRight: 16,
-        borderRadius: 0,
-    },
 }));
 
-function MainToolbar(props) {
+function MainMobileToolbar(props) {
     const classes = useStyles();
 
     return (
-        <AppBar position="fixed" className={clsx(classes.appBar)}>
+        <AppBar position="fixed" className={classes.appBar}>
             <Toolbar className={classes.toolbar}>
                 <Box display="flex" flexGrow={1}>
                     <Button className={classes.logoButton}>
@@ -46,22 +35,11 @@ function MainToolbar(props) {
                             height="40px"
                         />
                     </Button>
-                    <Button className={classes.button}>Products</Button>
-                    <Button className={classes.button}>Company</Button>
-                    <Button className={classes.button}>Resources</Button>
-                    <Button className={classes.button}>Pricing</Button>
                 </Box>
-                <Button className={classes.action}>Log In</Button>
-                <Button
-                    className={classes.action}
-                    color="primary"
-                    variant="contained"
-                >
-                    Try for Free
-                </Button>
+                <MainDrawer />
             </Toolbar>
         </AppBar>
     );
 }
 
-export default withRouter(MainToolbar);
+export default withRouter(MainMobileToolbar);

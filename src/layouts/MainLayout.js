@@ -1,12 +1,11 @@
 import React, { Suspense } from "react";
-import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { renderRoutes } from "react-router-config";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import MainToolbar from "./MainToolbar";
-import MainDrawer from "./MainDrawer";
-
+import MainMobileToolbar from "./MainMobileToolbar";
+import Hidden from "@material-ui/core/Hidden";
 import routes from "../routes";
 
 const miniDrawerWidth = 60;
@@ -48,33 +47,19 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-// TODO: The layouts should be configurable.
-// TODO: Show drawer instead of toolbar for smaller screens.
 function MainLayout(props) {
-    const [drawerOpen, setDrawerOpen] = React.useState(false);
     const classes = useStyles();
-
-    const toggleDrawer = () => {
-        setDrawerOpen(!drawerOpen);
-    };
 
     return (
         <React.Fragment>
             <div className={classes.root}>
-                <MainDrawer
-                    open={drawerOpen}
-                    handleCloseDrawer={toggleDrawer}
-                />
-                <MainToolbar
-                    drawerOpen={drawerOpen}
-                    toggleDrawer={toggleDrawer}
-                />
-
-                <main
-                    className={clsx(classes.content, {
-                        [classes.contentShift]: drawerOpen,
-                    })}
-                >
+                <Hidden smDown={true}>
+                    <MainToolbar />
+                </Hidden>
+                <Hidden mdUp={true}>
+                    <MainMobileToolbar />
+                </Hidden>
+                <main className={classes.content}>
                     <Suspense
                         fallback={
                             <CircularProgress

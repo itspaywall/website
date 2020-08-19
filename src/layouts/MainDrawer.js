@@ -1,167 +1,87 @@
 import React from "react";
-import clsx from "clsx";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { withRouter } from "react-router-dom";
-import Drawer from "@material-ui/core/Drawer";
+import { makeStyles } from "@material-ui/core/styles";
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import MailIcon from "@material-ui/icons/Mail";
+import MenuIcon from "@material-ui/icons/Menu";
+import IconButton from "@material-ui/core/IconButton";
 
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import AccountsIcon from "@material-ui/icons/AccountCircle";
-import PreferencesIcon from "@material-ui/icons/Settings";
-import AnalyticsIcon from "@material-ui/icons/BarChart";
-import TransactionsIcon from "@material-ui/icons/MonetizationOn";
-import SubscriptionsIcon from "@material-ui/icons/Autorenew";
-import IvoicesIcon from "@material-ui/icons/Receipt";
-import PlansIcon from "@material-ui/icons/LocalOffer";
+const useStyles = makeStyles({
+    list: {
+        width: 250,
+    },
+    fullList: {
+        width: "auto",
+    },
+});
 
-const drawerWidth = 240;
-
-const useStyles = makeStyles((theme) => ({
-    drawer: {
-        width: drawerWidth,
-        flexShrink: 0,
-        whiteSpace: "nowrap",
-    },
-    drawerOpen: {
-        width: drawerWidth,
-        transition: theme.transitions.create("width", {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
-    drawerClose: {
-        transition: theme.transitions.create("width", {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-        overflowX: "hidden",
-        width: 60,
-    },
-    toolbar: {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "flex-end",
-        padding: theme.spacing(0, 1),
-        // necessary for content to be below app bar
-        ...theme.mixins.toolbar,
-    },
-}));
-
-const navigationGroups = [
-    {
-        id: "primary",
-        items: [
-            {
-                id: "accounts",
-                title: "Accounts",
-                icon: <AccountsIcon />,
-                link: "/accounts",
-            },
-            {
-                id: "subscriptions",
-                title: "Subscriptions",
-                icon: <SubscriptionsIcon />,
-                link: "/subscriptions",
-            },
-            {
-                id: "invoices",
-                title: "Invoices",
-                icon: <IvoicesIcon />,
-                link: "/invoices",
-            },
-            {
-                id: "transactions",
-                title: "Transactions",
-                icon: <TransactionsIcon />,
-                link: "/transactions",
-            },
-        ],
-    },
-    {
-        id: "dashboard",
-        items: [
-            {
-                id: "analytics",
-                title: "Analytics",
-                icon: <AnalyticsIcon />,
-                link: "/analytics",
-            },
-        ],
-    },
-    {
-        id: "configuration",
-        items: [
-            {
-                id: "plans",
-                title: "Plans",
-                icon: <PlansIcon />,
-                link: "/plans",
-            },
-            {
-                id: "preferences",
-                title: "Preferences",
-                icon: <PreferencesIcon />,
-                link: "/preferences",
-            },
-        ],
-    },
-];
-
-function MainDrawer(props) {
-    const makeLinkHandler = (url) => () => props.history.push(url);
-
+export default function MainDrawer() {
     const classes = useStyles();
-    const theme = useTheme();
-    const { open, handleCloseDrawer } = props;
-    return (
-        <Drawer
-            variant="permanent"
-            className={clsx(classes.drawer, {
-                [classes.drawerOpen]: open,
-                [classes.drawerClose]: !open,
-            })}
-            classes={{
-                paper: clsx({
-                    [classes.drawerOpen]: open,
-                    [classes.drawerClose]: !open,
-                }),
-            }}
+    const [open, setOpen] = React.useState(false);
+
+    const toggleDrawer = (open) => (event) => {
+        if (
+            event &&
+            event.type === "keydown" &&
+            (event.key === "Tab" || event.key === "Shift")
+        ) {
+            return;
+        }
+
+        setOpen(open);
+    };
+
+    const list = (
+        <div
+            className={classes.list}
+            role="presentation"
+            onClick={toggleDrawer(false)}
+            onKeyDown={toggleDrawer(false)}
         >
-            <div className={classes.toolbar}>
-                <IconButton onClick={handleCloseDrawer}>
-                    {theme.direction === "rtl" ? (
-                        <ChevronRightIcon />
-                    ) : (
-                        <ChevronLeftIcon />
-                    )}
-                </IconButton>
-            </div>
+            <List>
+                {["Inbox", "Starred", "Send email", "Drafts"].map(
+                    (text, index) => (
+                        <ListItem button key={text}>
+                            <ListItemIcon>
+                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                            </ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItem>
+                    )
+                )}
+            </List>
             <Divider />
-            {navigationGroups.map((group, index) => (
-                <React.Fragment key={group.id}>
-                    <List>
-                        {group.items.map((item, index) => (
-                            <ListItem
-                                button
-                                key={item.id}
-                                onClick={makeLinkHandler(item.link)}
-                            >
-                                <ListItemIcon>{item.icon}</ListItemIcon>
-                                <ListItemText primary={item.title} />
-                            </ListItem>
-                        ))}
-                    </List>
-                    {index + 1 < navigationGroups.length && <Divider />}
-                </React.Fragment>
-            ))}
-        </Drawer>
+            <List>
+                {["All mail", "Trash", "Spam"].map((text, index) => (
+                    <ListItem button key={text}>
+                        <ListItemIcon>
+                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                        </ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+        </div>
+    );
+
+    return (
+        <div>
+            <IconButton className={classes.button} onClick={toggleDrawer(true)}>
+                <MenuIcon />
+            </IconButton>
+            <SwipeableDrawer
+                anchor="right"
+                open={open}
+                onClose={toggleDrawer(false)}
+                onOpen={toggleDrawer(true)}
+            >
+                {list}
+            </SwipeableDrawer>
+        </div>
     );
 }
-
-export default withRouter(MainDrawer);
