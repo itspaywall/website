@@ -9,9 +9,9 @@ import theme from "./theme";
 function App() {
     return (
         <React.Fragment>
-            <CssBaseline />
             <BrowserRouter>
                 <ThemeProvider theme={theme}>
+                    <CssBaseline />
                     <PrimaryLayout />
                 </ThemeProvider>
             </BrowserRouter>
