@@ -1,15 +1,13 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
 import { useHistory } from "react-router-dom";
-
-import MenuIcon from "@material-ui/icons/Menu";
 import FAQsIcon from "@material-ui/icons/Help";
 import PricingIcon from "@material-ui/icons/MonetizationOn";
 
@@ -19,6 +17,9 @@ const useStyles = makeStyles({
     },
     fullList: {
         width: "auto",
+    },
+    action: {
+        width: "100%",
     },
 });
 

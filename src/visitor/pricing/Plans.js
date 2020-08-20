@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
         background: "linear-gradient(45deg, #2196F3 30%, #3F51B5 90%)",
         color: theme.palette.primary.contrastText,
         display: "flex",
-
         [theme.breakpoints.down("md")]: {
             height: 640,
         },
@@ -33,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     body: {
+        color: "#5F6368",
         marginTop: -192,
     },
     cards: {
@@ -51,12 +51,10 @@ const useStyles = makeStyles((theme) => ({
     title: {
         textAlign: "center",
         fontSize: 40,
-        fontWeight: 800,
     },
     subtitle: {
         textAlign: "center",
         fontSize: 20,
-        fontWeight: 300,
         marginTop: 16,
     },
     planContainer: {
@@ -77,28 +75,29 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     planHeading: {
+        color: "#5F6368",
         textAlign: "center",
         marginTop: 16,
     },
     planTitle: {
-        fontWeight: 600,
+        color: "#5F6368",
         fontSize: 24,
     },
     planSubtitle: {
+        color: "#5F6368",
         fontSize: 16,
         marginLeft: 8,
         marginRight: 8,
         display: "block",
-        fontWeight: 600,
         marginTop: 8,
     },
     includes: {
+        color: "#5F6368",
         marginTop: 16,
         fontSize: 14,
-        color: "#222222",
-        fontWeight: 600,
     },
     features: {
+        color: "#5F6368",
         textAlign: "center",
         display: "flex",
         flexDirection: "column",
@@ -109,6 +108,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     feature: {
+        color: "#5F6368",
         fontSize: 14,
         marginTop: 16,
     },
