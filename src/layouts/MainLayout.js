@@ -9,7 +9,6 @@ import MainFooter from "./MainFooter";
 import Hidden from "@material-ui/core/Hidden";
 import routes from "../routes";
 
-const miniDrawerWidth = 60;
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -19,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
             easing: theme.transitions.easing.easeOut,
             duration: theme.transitions.duration.enteringScreen,
         }),
-        marginLeft: miniDrawerWidth,
         marginTop: 64,
     },
     contentShift: {
