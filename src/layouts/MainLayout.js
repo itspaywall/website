@@ -5,6 +5,7 @@ import { renderRoutes } from "react-router-config";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import MainToolbar from "./MainToolbar";
 import MainMobileToolbar from "./MainMobileToolbar";
+import MainFooter from "./MainFooter";
 import Hidden from "@material-ui/core/Hidden";
 import routes from "../routes";
 
@@ -73,7 +74,7 @@ function MainLayout(props) {
                     {props.children}
                 </main>
 
-                {/* <MainFooter /> */}
+                <MainFooter />
             </div>
         </React.Fragment>
     );
