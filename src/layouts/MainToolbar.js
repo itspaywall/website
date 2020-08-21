@@ -32,24 +32,47 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const links = [
+    {
+        id: "pricing",
+        title: "Pricing",
+        url: "/pricing",
+    },
+    {
+        id: "faqs",
+        title: "FAQs",
+        url: "/faqs",
+    },
+];
+
 function MainToolbar(props) {
     const classes = useStyles();
+    const { history } = props;
+    const handleLink = (url) => () => history.push(url);
 
     return (
         <AppBar position="fixed" className={clsx(classes.appBar)}>
             <Toolbar className={classes.toolbar}>
                 <Box display="flex" flexGrow={1}>
-                    <Button className={classes.logoButton}>
+                    <Button
+                        className={classes.logoButton}
+                        onClick={handleLink("/index")}
+                    >
                         <img
                             src="assets/images/hubble.png"
                             alt="Hubble logo"
                             height="40px"
                         />
                     </Button>
-                    <Button className={classes.button}>Products</Button>
-                    <Button className={classes.button}>Company</Button>
-                    <Button className={classes.button}>Resources</Button>
-                    <Button className={classes.button}>Pricing</Button>
+                    {links.map((item) => (
+                        <Button
+                            key={item.id}
+                            onClick={handleLink(item.url)}
+                            className={classes.button}
+                        >
+                            {item.title}
+                        </Button>
+                    ))}
                 </Box>
                 <Button className={classes.action}>Log In</Button>
                 <Button

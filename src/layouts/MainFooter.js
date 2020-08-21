@@ -150,18 +150,18 @@ const groups = [
                 url: '/industry/ecommerce'
             }
         ]
-    },
+    },*/
     {
-        'id'   : 'resources',
-        'title': 'Resources',
-        'type' : 'group',
-        'children' : [
+        id: "resources",
+        title: "Resources",
+        type: "group",
+        children: [
             {
-                'id' : 'pricing',
-                'title' : 'Pricing',
-                'url' : '/pricing'
+                id: "pricing",
+                title: "Pricing",
+                url: "/pricing",
             },
-            {
+            /*{
                 'id'   : 'use-cases',
                 'title': 'Use Cases',
                 'url'  : '/use-cases'
@@ -180,19 +180,19 @@ const groups = [
                 'id'   : 'documentation',
                 'title': 'Documentation',
                 'url'  : '/documentation'
-            },
+            },*/
             {
-                'id'   : 'faqs',
-                'title': 'FAQs',
-                'url'  : '/faqs'
-            },
+                id: "faqs",
+                title: "FAQs",
+                url: "/faqs",
+            } /*
             {
                 'id'   : 'research',
                 'title': 'Research',
                 'url'  : '/research'
-            },
-        ]
-    },*/
+            },*/,
+        ],
+    },
     {
         id: "connect",
         title: "Connect",
@@ -219,7 +219,7 @@ const FooterLayout2 = ({ classes, theme }) => {
 
     return (
         <Container className={classes.footer}>
-            <Grid container={true} spacing={2}>
+            <Grid container={true} spacing={6}>
                 <Grid item={true} lg={4}>
                     <p>
                         <img

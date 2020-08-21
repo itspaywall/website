@@ -182,8 +182,7 @@ const useStyles = makeStyles((theme) => ({
         marginRight: "auto",
         paddingLeft: 16,
         paddingRight: 16,
-        paddingTop: 24,
-        paddingBottom: 24,
+        marginTop: 40,
         [theme.breakpoints.up("lg")]: {
             maxWidth: "70%",
         },
