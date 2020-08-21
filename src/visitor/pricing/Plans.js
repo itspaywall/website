@@ -10,10 +10,14 @@ const smFeaturesHeight = 350;
 
 const useStyles = makeStyles((theme) => ({
     header: {
-        height: 640,
+        height: 540,
         background: "linear-gradient(45deg, #2196F3 30%, #3F51B5 90%)",
         color: theme.palette.primary.contrastText,
         display: "flex",
+
+        [theme.breakpoints.down("md")]: {
+            height: 640,
+        },
     },
     headerContent: {
         padding: 24,

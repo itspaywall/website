@@ -10,7 +10,7 @@ const routes = [
     {
         path: "/",
         exact: true,
-        component: () => <Redirect to="/analytics" />,
+        component: () => <Redirect to="/index" />,
     },
     {
         component: () => <Redirect to="/error/404" />,
