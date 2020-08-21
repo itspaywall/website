@@ -190,7 +190,7 @@ const useStyles = makeStyles((theme) => ({
     groupTitle: {
         fontSize: 20,
         marginBottom: 16,
-        fontWeight: 700,
+        color: "#5F6368",
     },
     panel: {
         margin: 0,
@@ -208,9 +208,13 @@ const useStyles = makeStyles((theme) => ({
     question: {
         display: "flex",
         alignItems: "center",
+        color: "#5F6368",
     },
-    questionText: {},
+    questionText: {
+        color: "#5F6368",
+    },
     questionIcon: {
+        color: "#5F6368",
         marginRight: 8,
     },
     [theme.breakpoints.down("sm")]: {

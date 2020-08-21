@@ -7,12 +7,10 @@ import { Link, withRouter } from "react-router-dom";
 
 const styles = (theme) => ({
     footer: {
+        color: "#5F6368",
         paddingTop: 140,
         paddingLeft: 32,
         paddingRight: 32,
-    },
-    groupTitle: {
-        fontWeight: 600,
     },
     about: {
         marginTop: 16,
@@ -25,7 +23,6 @@ const styles = (theme) => ({
         verticalAlign: "middle",
     },
     companyName: {
-        fontWeight: 700,
         fontSize: 20,
         verticalAlign: "middle",
     },
@@ -35,7 +32,6 @@ const styles = (theme) => ({
     connectWithUs: {
         display: "block",
         textAlign: "center",
-        fontWeight: 600,
     },
     socialMediaContainer: {
         textAlign: "center",
