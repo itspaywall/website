@@ -1,19 +1,10 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        margin: 8,
-        borderRadius: 0,
-    },
-    media: {
-        height: 200,
-        width: 200,
-        margin: "auto",
+        padding: 24,
         [theme.breakpoints.up("xl")]: {
             height: 300,
             width: 300,
@@ -24,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
         margin: 0,
         padding: 0,
         fontSize: 20,
+        fontWeight: 600,
         [theme.breakpoints.up("xl")]: {
             fontSize: 32,
         },
@@ -42,15 +34,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Advantage(props) {
     const classes = useStyles();
-    const { image, title, subtitle } = props;
+    const { title, subtitle } = props;
 
     return (
-        <Paper className={classes.root} elevation={4}>
-            <CardMedia className={classes.media} image={image} />
-            <CardContent>
-                <Typography className={classes.title}>{title}</Typography>
-                <Typography className={classes.subtitle}>{subtitle}</Typography>
-            </CardContent>
-        </Paper>
+        <div className={classes.root}>
+            <Typography className={classes.title}>{title}</Typography>
+            <Typography className={classes.subtitle}>{subtitle}</Typography>
+        </div>
     );
 }
