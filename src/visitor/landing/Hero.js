@@ -15,20 +15,16 @@ const useStyles = makeStyles((theme) => ({
         height: "100vh",
     },
     title: {
+        padding: 16,
+        margin: 0,
+        color: "#5F6368",
+        lineHeight: 1.3,
         [theme.breakpoints.up("xs")]: {
             fontSize: 40,
-            margin: "auto",
         },
         [theme.breakpoints.up("lg")]: {
             fontSize: 60,
-            margin: "auto",
         },
-        [theme.breakpoints.up("xl")]: {
-            fontSize: 60,
-            margin: "auto",
-        },
-        padding: 16,
-        color: "#5F6368",
     },
     subtitle: {
         [theme.breakpoints.up("xs")]: {
@@ -50,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
         margin: 16,
         marginTop: 24,
         borderRadius: 0,
+        paddingTop: 16,
+        paddingBottom: 16,
+        width: 200,
     },
     image: {
         margin: 0,
