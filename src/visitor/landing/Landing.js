@@ -1,8 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
-import LandingSection from "./LandingSection";
-import CardsSection from "./CardsSection";
-import FeaturesSection from "./FeaturesSection";
+import Hero from "./Hero";
+import Advantages from "./Advantages";
+import Features from "./Features";
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -14,9 +14,9 @@ function Landing() {
     const classes = useStyles();
     return (
         <div className={classes.container}>
-            <LandingSection />
-            <CardsSection />
-            <FeaturesSection />
+            <Hero />
+            <Advantages />
+            <Features />
         </div>
     );
 }

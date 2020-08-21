@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, makeStyles, CardMedia, Grid } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import Image from "./images/landing.svg";
+import Hidden from "@material-ui/core/Hidden";
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -19,6 +19,10 @@ const useStyles = makeStyles((theme) => ({
             fontSize: 40,
             margin: "auto",
         },
+        [theme.breakpoints.up("lg")]: {
+            fontSize: 60,
+            margin: "auto",
+        },
         [theme.breakpoints.up("xl")]: {
             fontSize: 60,
             margin: "auto",
@@ -29,6 +33,10 @@ const useStyles = makeStyles((theme) => ({
     subtitle: {
         [theme.breakpoints.up("xs")]: {
             fontSize: 20,
+            margin: "auto",
+        },
+        [theme.breakpoints.up("lg")]: {
+            fontSize: 30,
             margin: "auto",
         },
         [theme.breakpoints.up("xl")]: {
@@ -55,13 +63,18 @@ const useStyles = makeStyles((theme) => ({
     },
     media: {
         [theme.breakpoints.up("xs")]: {
-            height: 300,
-            width: 300,
+            height: 360,
+            width: 360,
+            margin: "auto",
+        },
+        [theme.breakpoints.up("lg")]: {
+            height: 480,
+            width: 480,
             margin: "auto",
         },
         [theme.breakpoints.up("xl")]: {
-            height: 500,
-            width: 500,
+            height: 680,
+            width: 680,
             margin: "auto",
         },
     },
@@ -73,11 +86,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function LandingSection() {
+function Hero() {
     const classes = useStyles();
     return (
         <Grid container={true} className={classes.container}>
-            <Grid item={true} className={classes.item} xs={12} md={7}>
+            <Grid item={true} className={classes.item} xs={12} md={6}>
                 <Typography className={classes.title}>
                     Hubble is an intuitive subscription management service.
                 </Typography>
@@ -94,11 +107,16 @@ function LandingSection() {
                     Try for Free
                 </Button>
             </Grid>
-            <Grid item={true} className={classes.item} xs={12} md={3}>
-                <CardMedia className={classes.media} image={Image} />
-            </Grid>
+            <Hidden smDown={true}>
+                <Grid item={true} className={classes.item} xs={12} md={4}>
+                    <CardMedia
+                        className={classes.media}
+                        image="assets/images/landing.svg"
+                    />
+                </Grid>
+            </Hidden>
         </Grid>
     );
 }
 
-export default LandingSection;
+export default Hero;

@@ -3,10 +3,8 @@ import { Redirect } from "react-router-dom";
 
 import errorConfiguration from "./error/configuration";
 import visitorConfiguration from "./visitor/configuration";
-import landingConfiguration from "./landing/configuration";
 
 const routes = [
-    ...landingConfiguration,
     ...errorConfiguration,
     ...visitorConfiguration,
     {
