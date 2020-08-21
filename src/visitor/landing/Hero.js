@@ -19,25 +19,21 @@ const useStyles = makeStyles((theme) => ({
         margin: 0,
         color: "#5F6368",
         lineHeight: 1.3,
-        [theme.breakpoints.up("xs")]: {
-            fontSize: 40,
+        [theme.breakpoints.down("xs")]: {
+            textAlign: "center",
+            fontSize: 32,
         },
         [theme.breakpoints.up("lg")]: {
             fontSize: 60,
         },
     },
     subtitle: {
-        [theme.breakpoints.up("xs")]: {
-            fontSize: 20,
-            margin: "auto",
+        [theme.breakpoints.down("xs")]: {
+            fontSize: 16,
+            textAlign: "center",
         },
         [theme.breakpoints.up("lg")]: {
             fontSize: 30,
-            margin: "auto",
-        },
-        [theme.breakpoints.up("xl")]: {
-            fontSize: 30,
-            margin: "auto",
         },
         padding: 16,
         color: "#5F6368",
@@ -49,6 +45,12 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: 16,
         paddingBottom: 16,
         width: 200,
+
+        [theme.breakpoints.down("xs")]: {
+            display: "block",
+            marginLeft: "auto",
+            marginRight: "auto",
+        },
     },
     image: {
         margin: 0,
