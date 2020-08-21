@@ -5,6 +5,7 @@ import { PrimaryLayout } from "./common";
 import { ThemeProvider } from "@material-ui/core/styles";
 
 import theme from "./theme";
+import ScrollToTop from "./ScrollToTop";
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
             <BrowserRouter>
                 <ThemeProvider theme={theme}>
                     <CssBaseline />
+                    <ScrollToTop />
                     <PrimaryLayout />
                 </ThemeProvider>
             </BrowserRouter>
