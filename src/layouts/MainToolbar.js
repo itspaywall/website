@@ -1,6 +1,6 @@
 import React from "react";
 import { AppBar, Button, Toolbar, makeStyles } from "@material-ui/core";
-import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import clsx from "clsx";
 import Box from "@material-ui/core/Box";
 
@@ -47,7 +47,7 @@ const links = [
 
 function MainToolbar(props) {
     const classes = useStyles();
-    const { history } = props;
+    const history = useHistory();
     const handleLink = (url) => () => history.push(url);
 
     return (
@@ -87,4 +87,4 @@ function MainToolbar(props) {
     );
 }
 
-export default withRouter(MainToolbar);
+export default MainToolbar;

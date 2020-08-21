@@ -1,5 +1,6 @@
 {
     "name": "hubble-console",
+    "homepage": "https://itshubble.github.io/",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
