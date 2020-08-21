@@ -6,10 +6,12 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
-import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
+import { useHistory } from "react-router-dom";
+
+import MenuIcon from "@material-ui/icons/Menu";
+import FAQsIcon from "@material-ui/icons/Help";
+import PricingIcon from "@material-ui/icons/MonetizationOn";
 
 const useStyles = makeStyles({
     list: {
@@ -20,9 +22,25 @@ const useStyles = makeStyles({
     },
 });
 
+const links = [
+    {
+        id: "pricing",
+        title: "Pricing",
+        url: "/pricing",
+        icon: <PricingIcon />,
+    },
+    {
+        id: "faqs",
+        title: "FAQs",
+        url: "/faqs",
+        icon: <FAQsIcon />,
+    },
+];
+
 export default function MainDrawer() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
+    const history = useHistory();
 
     const toggleDrawer = (open) => (event) => {
         if (
@@ -36,33 +54,26 @@ export default function MainDrawer() {
         setOpen(open);
     };
 
+    const handleLink = (url) => () => {
+        history.push(url);
+        setOpen(false);
+    };
+
     const list = (
         <div
             className={classes.list}
             role="presentation"
-            onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
         >
             <List>
-                {["Inbox", "Starred", "Send email", "Drafts"].map(
-                    (text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    )
-                )}
-            </List>
-            <Divider />
-            <List>
-                {["All mail", "Trash", "Spam"].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
+                {links.map((item) => (
+                    <ListItem
+                        button
+                        key={item.id}
+                        onClick={handleLink(item.url)}
+                    >
+                        <ListItemIcon>{item.icon}</ListItemIcon>
+                        <ListItemText primary={item.title} />
                     </ListItem>
                 ))}
             </List>

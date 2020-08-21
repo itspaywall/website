@@ -242,7 +242,7 @@ const FooterLayout2 = ({ classes, theme }) => {
                                 item={true}
                                 xs={12}
                                 sm={4}
-                                lg={3}
+                                lg={2}
                             >
                                 <Typography className={classes.groupTitle}>
                                     {group.title}
