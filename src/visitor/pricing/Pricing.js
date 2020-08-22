@@ -3,7 +3,7 @@ import Plans from "./Plans";
 
 function Pricing(props) {
     useEffect(() => {
-        document.title = "Hubble Plans and Pricing";
+        document.title = "Plans and Pricing | Hubble Subscriptions";
     }, []);
     return (
         <div>

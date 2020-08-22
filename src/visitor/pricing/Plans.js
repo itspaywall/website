@@ -58,7 +58,8 @@ const useStyles = makeStyles((theme) => ({
         marginTop: 16,
     },
     planContainer: {
-        padding: 32,
+        padding: 8,
+        margin: 0,
     },
     plan: {
         maxWidth: 320,
