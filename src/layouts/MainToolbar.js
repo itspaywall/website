@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 const links = [
     {
         id: "pricing",
-        title: "Pricing",
+        title: "PRICING",
         url: "/pricing",
     },
     {
@@ -74,13 +74,19 @@ function MainToolbar(props) {
                         </Button>
                     ))}
                 </Box>
-                <Button className={classes.action}>Log In</Button>
+                <Button
+                    className={classes.action}
+                    onClick={handleLink("/login")}
+                >
+                    LOGIN
+                </Button>
                 <Button
                     className={classes.action}
                     color="primary"
                     variant="contained"
+                    onClick={handleLink("/register")}
                 >
-                    Try for Free
+                    TRY FOR FREE
                 </Button>
             </Toolbar>
         </AppBar>

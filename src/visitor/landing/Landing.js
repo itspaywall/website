@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core";
 import Hero from "./Hero";
 import Advantages from "./Advantages";
 import Features from "./Features";
+import CallToAction from "./CallToAction";
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -22,6 +23,7 @@ function Landing() {
             <Hero />
             <Advantages />
             <Features />
+            <CallToAction />
         </div>
     );
 }
