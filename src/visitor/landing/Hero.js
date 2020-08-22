@@ -2,6 +2,7 @@ import React from "react";
 import { Button, makeStyles, CardMedia, Grid } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Hidden from "@material-ui/core/Hidden";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -89,6 +90,9 @@ const useStyles = makeStyles((theme) => ({
 
 function Hero() {
     const classes = useStyles();
+    const history = useHistory();
+    const handleClick = () => history.push("/register");
+
     return (
         <Grid container={true} className={classes.container}>
             <Grid item={true} className={classes.item} xs={12} md={6}>
@@ -104,8 +108,9 @@ function Hero() {
                     size="large"
                     color="primary"
                     variant="contained"
+                    onClick={handleClick}
                 >
-                    Try for Free
+                    TRY FOR FREE
                 </Button>
             </Grid>
             <Hidden smDown={true}>

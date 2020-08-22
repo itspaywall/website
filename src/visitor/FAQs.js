@@ -180,8 +180,6 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         marginLeft: "auto",
         marginRight: "auto",
-        paddingLeft: 16,
-        paddingRight: 16,
         marginTop: 40,
         [theme.breakpoints.up("lg")]: {
             maxWidth: "70%",
@@ -272,7 +270,7 @@ function FAQs(props) {
     const faqs = getFilteredArray(data, searchText);
 
     useEffect(() => {
-        document.title = "Hubble FAQs";
+        document.title = "FAQs | Hubble Subscriptions";
     }, []);
 
     return (
@@ -290,7 +288,7 @@ function FAQs(props) {
                     Frequently Asked Questions
                 </Typography>
 
-                <Paper className={classes.searchPaper} elevation={1}>
+                <Paper className={classes.searchPaper} elevation={0}>
                     <Icon color="action" className={classes.searchIcon}>
                         search
                     </Icon>

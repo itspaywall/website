@@ -86,7 +86,9 @@ function Features() {
     return (
         <Card className={classes.card} elevation={4}>
             <CardContent className={classes.cardContent}>
-                <Typography className={classes.title}>Features</Typography>
+                <Typography className={classes.title}>
+                    Everything you need in one place
+                </Typography>
                 <Hidden smDown={true}>
                     <img
                         src="assets/images/features.svg"

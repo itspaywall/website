@@ -3,6 +3,11 @@ import { makeStyles, Grid } from "@material-ui/core";
 import CardContent from "@material-ui/core/CardContent";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
+
+import InsightsIcon from "@material-ui/icons/DonutLarge";
+import BuildIcon from "@material-ui/icons/Business";
+import MobileIcon from "@material-ui/icons/MobileFriendly";
+
 import Advantage from "./Advantage";
 
 const useStyles = makeStyles((theme) => ({
@@ -47,9 +52,9 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     cardContent: {
-        height: 240,
+        height: 300,
         [theme.breakpoints.down("sm")]: {
-            height: 640,
+            height: 850,
         },
     },
     container: {
@@ -65,19 +70,19 @@ const list = [
         title: "Actionable Insights",
         subtitle:
             "Get better insights into your customers behavior through cohort analytics and AI powered predictions.",
-        image: "assets/images/1.svg",
+        icon: InsightsIcon,
     },
     {
         title: "Build, Scale, Innovate",
         subtitle:
             "Each business has different requirements, it could be the user traffic, or the business model, or anything else.",
-        image: "assets/images/2.svg",
+        icon: BuildIcon,
     },
     {
         title: "Mobile First",
         subtitle:
             "Not in front of your laptop? No worries, we got you covered! Get instant access to your data from our iOS and Android apps.",
-        image: "assets/images/3.svg",
+        icon: MobileIcon,
     },
 ];
 
@@ -113,7 +118,7 @@ function Advantages() {
                                 <Advantage
                                     title={card.title}
                                     subtitle={card.subtitle}
-                                    image={card.image}
+                                    icon={card.icon}
                                 />
                             </Grid>
                         ))}
