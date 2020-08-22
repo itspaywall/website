@@ -1,11 +1,11 @@
 import React from "react";
-import { withStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const styles = (theme) => ({
+const useStyles = makeStyles((theme) => ({
     footer: {
         color: "#5F6368",
         paddingTop: 140,
@@ -22,29 +22,16 @@ const styles = (theme) => ({
         marginRight: 16,
         verticalAlign: "middle",
     },
-    companyName: {
-        fontSize: 20,
-        verticalAlign: "middle",
-    },
     link: {
         fontSize: 14,
-    },
-    connectWithUs: {
-        display: "block",
-        textAlign: "center",
-    },
-    socialMediaContainer: {
-        textAlign: "center",
-    },
-    socialMedia: {
-        display: "block",
-        marginBottom: 8,
+        color: theme.palette.text.primary,
+        textDecoration: "none",
     },
     copyright: {
         marginTop: 8,
         marginBottom: 24,
     },
-});
+}));
 
 const groups = [
     /*{
@@ -195,24 +182,22 @@ const groups = [
         children: [
             {
                 id: "linkedin",
-                url: "https://www.linkedin.com/itshubble",
+                url: "https://www.linkedin.com/company/itshubble",
                 title: "LinkedIn",
+                external: true,
             },
             {
                 id: "github",
                 url: "https://www.github.com/itshubble",
                 title: "GitHub",
+                external: true,
             },
         ],
     },
 ];
 
-const FooterLayout2 = ({ classes, theme }) => {
-    const linkStyle = {
-        color: theme.palette.text.primary,
-        textDecoration: "none",
-    };
-
+function MainFooter() {
+    const classes = useStyles();
     return (
         <Container className={classes.footer}>
             <Grid container={true} spacing={6}>
@@ -246,14 +231,25 @@ const FooterLayout2 = ({ classes, theme }) => {
                                 <Typography>
                                     {group.children.map((child, index) => (
                                         <React.Fragment>
-                                            <Link
-                                                key={child.id}
-                                                style={linkStyle}
-                                                to={child.url}
-                                                className={classes.link}
-                                            >
-                                                {child.title}
-                                            </Link>
+                                            {child.external ? (
+                                                <a
+                                                    key={child.id}
+                                                    href={child.url}
+                                                    className={classes.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    {child.title}
+                                                </a>
+                                            ) : (
+                                                <Link
+                                                    key={child.id}
+                                                    to={child.url}
+                                                    className={classes.link}
+                                                >
+                                                    {child.title}
+                                                </Link>
+                                            )}
                                             <br />
                                         </React.Fragment>
                                     ))}
@@ -270,8 +266,6 @@ const FooterLayout2 = ({ classes, theme }) => {
             </Grid>
         </Container>
     );
-};
+}
 
-export default withStyles(styles, { withTheme: true })(
-    withRouter(FooterLayout2)
-);
+export default MainFooter;
