@@ -1,9 +1,14 @@
 import React from "react";
-import { withStyles, Grid, Typography } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 
-const styles = (theme) => ({
-    root: {},
+const useStyles = makeStyles((theme) => ({
+    root: {
+        paddingLeft: 16,
+        paddingRight: 16,
+    },
     image: {
         marginTop: 120,
         width: 600,
@@ -11,31 +16,42 @@ const styles = (theme) => ({
         display: "block",
         marginLeft: "auto",
         marginRight: "auto",
+        [theme.breakpoints.down("sm")]: {
+            width: 300,
+        },
     },
     title: {
-        marginTop: 16,
+        marginTop: 24,
+        fontsize: 28,
         textAlign: "center",
+        [theme.breakpoints.down("sm")]: {
+            fontSize: 24,
+        },
     },
     description: {
-        marginTop: 16,
+        marginTop: 8,
+        fontSize: 20,
         textAlign: "center",
+        [theme.breakpoints.down("sm")]: {
+            fontSize: 16,
+        },
     },
     link: {
         marginTop: 16,
         textAlign: "center",
         display: "block",
     },
-});
+}));
 
-function Error404(props) {
-    const { classes } = props;
+function Error500(props) {
+    const classes = useStyles();
     return (
         <Grid container={true} justify="center" className={classes.root}>
-            <Grid item={true} lg={6}>
+            <Grid item={true} xs={12} lg={6}>
                 <img
                     className={classes.image}
                     src="assets/images/500.png"
-                    alt="Error 500"
+                    alt="Error 404"
                 />
                 <Typography
                     variant="h4"
@@ -54,12 +70,12 @@ function Error404(props) {
                     try again in a couple of minutes.
                 </Typography>
 
-                <Link className={classes.link} to="/analytics">
-                    Go back to analytics
+                <Link className={classes.link} to="/index">
+                    Go back to home
                 </Link>
             </Grid>
         </Grid>
     );
 }
 
-export default withStyles(styles)(Error404);
+export default Error500;

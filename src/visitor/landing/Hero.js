@@ -80,12 +80,6 @@ const useStyles = makeStyles((theme) => ({
             margin: "auto",
         },
     },
-    landingcard: {
-        padding: 8,
-        display: "flex",
-        flexDirection: "vertical",
-        justifyContent: "center",
-    },
 }));
 
 function Hero() {
