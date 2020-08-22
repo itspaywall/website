@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
 import Hero from "./Hero";
 import Advantages from "./Advantages";
@@ -12,6 +12,11 @@ const useStyles = makeStyles((theme) => ({
 
 function Landing() {
     const classes = useStyles();
+
+    useEffect(() => {
+        document.title = "Hubble Subscriptions";
+    }, []);
+
     return (
         <div className={classes.container}>
             <Hero />
