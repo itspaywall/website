@@ -72,13 +72,10 @@ const useStyles = makeStyles((theme) => ({
 function ResetPassword(props) {
     const classes = useStyles();
 
-    const canBeSubmitted = () => {
-        const { email } = this.state;
-        return email.length > 0;
-    };
+    const canSubmit = () => false;
 
     useEffect(() => {
-        document.title = "Reset your password";
+        document.title = "Reset Password | Hubble Subscriptions";
     }, []);
 
     return (
@@ -125,7 +122,7 @@ function ResetPassword(props) {
                                 variant="contained"
                                 color="primary"
                                 className={classes.item}
-                                disabled={canBeSubmitted}
+                                disabled={canSubmit}
                             >
                                 Continue
                             </Button>

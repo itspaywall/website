@@ -5,7 +5,6 @@ import {
     CardContent,
     Typography,
     Hidden,
-    TextareaAutosize,
 } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import LoginForm from "./LoginForm";
@@ -68,7 +67,7 @@ function Login(props) {
     const classes = useStyles();
 
     useEffect(() => {
-        document.title = "Login";
+        document.title = "Login | Hubble Subscriptions";
     }, []);
 
     return (
@@ -76,6 +75,9 @@ function Login(props) {
             <Hidden smDown={true}>
                 <Grid item={true} className={classes.header} xs={12}>
                     <Typography variant="h3">Login to your account</Typography>
+                    <Typography variant="h5">
+                        One step away from awesomeness.
+                    </Typography>
                 </Grid>
             </Hidden>
 
@@ -87,9 +89,7 @@ function Login(props) {
                         </Typography>
                     </Hidden>
                     <CardContent>
-                        <div className={classes.form}>
-                            <LoginForm className={classes.item} />
-                        </div>
+                        <LoginForm />
                         <div className={classes.links}>
                             <Hidden mdUp={true}>
                                 <Link className={classes.link} to="/register">

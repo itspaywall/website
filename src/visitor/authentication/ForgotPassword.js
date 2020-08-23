@@ -73,13 +73,10 @@ function ForgotPassword(props) {
     const classes = useStyles();
 
     useEffect(() => {
-        document.title = "Recover your account";
+        document.title = "Recover your account | Hubble Subscriptions";
     }, []);
 
-    const canBeSubmitted = () => {
-        const { email } = this.state;
-        return email.length > 0;
-    };
+    const canSubmit = () => false;
 
     return (
         <Grid container={true} className={classes.root}>
@@ -118,7 +115,7 @@ function ForgotPassword(props) {
                                 variant="contained"
                                 color="primary"
                                 className={classes.item}
-                                disabled={!canBeSubmitted}
+                                disabled={canSubmit}
                             >
                                 Continue
                             </Button>

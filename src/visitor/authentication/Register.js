@@ -68,7 +68,7 @@ function Register(props) {
     const classes = useStyles();
 
     useEffect(() => {
-        document.title = "Register";
+        document.title = "Register | Hubble Subscriptions";
     }, []);
 
     return (
@@ -90,9 +90,7 @@ function Register(props) {
                         </Typography>
                     </Hidden>
                     <CardContent>
-                        <div className={classes.form}>
-                            <RegisterForm className={classes.item} />
-                        </div>
+                        <RegisterForm />
                         <div className={classes.links}>
                             <Hidden mdUp={true}>
                                 <Link className={classes.link} to="/login">

@@ -72,13 +72,10 @@ const useStyles = makeStyles((theme) => ({
 function Lock(props) {
     const classes = useStyles();
 
-    const canBeSubmitted = () => {
-        const { email } = this.state;
-        return email.length > 0;
-    };
+    const canSubmit = () => false;
 
     useEffect(() => {
-        document.title = "Session locked";
+        document.title = "Session Locked | Hubble Subscriptions";
     }, []);
 
     return (
@@ -126,7 +123,7 @@ function Lock(props) {
                                 variant="contained"
                                 color="secondary"
                                 className={classes.item}
-                                disabled={canBeSubmitted}
+                                disabled={canSubmit}
                             >
                                 Continue
                             </Button>
