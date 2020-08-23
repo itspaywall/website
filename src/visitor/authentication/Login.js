@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     makeStyles,
     Card,
     CardContent,
     Typography,
     Hidden,
+    TextareaAutosize,
 } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import LoginForm from "./LoginForm";
@@ -18,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        justify: "center",
         marginBottom: 200,
         [theme.breakpoints.down("sm")]: {
             height: 250,
@@ -30,9 +30,6 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
     },
     card: {
-        margin: 32,
-        marginLeft: 0,
-        marginRight: 0,
         paddingLeft: 16,
         paddingRight: 16,
         textAlign: "center",
@@ -41,12 +38,26 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     cardTitle: {
-        margin: 16,
         marginTop: 32,
+        margin: 16,
         color: "#5F6368",
         textAlign: "center",
     },
+    form: {
+        margin: 16,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+    },
     item: {
+        margin: 8,
+        width: "100%",
+    },
+    links: {
+        margin: 16,
+    },
+    link: {
         display: "block",
         margin: 8,
         textDecoration: "none",
@@ -56,9 +67,13 @@ const useStyles = makeStyles((theme) => ({
 function Login(props) {
     const classes = useStyles();
 
+    useEffect(() => {
+        document.title = "Login";
+    }, []);
+
     return (
         <Grid container={true} className={classes.root}>
-            <Hidden smDown>
+            <Hidden smDown={true}>
                 <Grid item={true} className={classes.header} xs={12}>
                     <Typography variant="h3">Login to your account</Typography>
                 </Grid>
@@ -66,21 +81,28 @@ function Login(props) {
 
             <Grid item={true} xs={12} md={3} className={classes.card}>
                 <Card>
-                    <Hidden mdUp>
+                    <Hidden mdUp={true}>
                         <Typography variant="h5" className={classes.cardTitle}>
                             Login to your account
                         </Typography>
                     </Hidden>
                     <CardContent>
-                        <LoginForm className={classes.item} />
-                        <Hidden mdUp>
-                            <Link className={classes.item} to="/register">
-                                Create Account
+                        <div className={classes.form}>
+                            <LoginForm className={classes.item} />
+                        </div>
+                        <div className={classes.links}>
+                            <Hidden mdUp={true}>
+                                <Link className={classes.link} to="/register">
+                                    Create Account
+                                </Link>
+                            </Hidden>
+                            <Link
+                                className={classes.link}
+                                to="/forgot-password"
+                            >
+                                Recover Account
                             </Link>
-                        </Hidden>
-                        <Link className={classes.item} to="/forgot-password">
-                            Recover Account
-                        </Link>
+                        </div>
                     </CardContent>
                 </Card>
             </Grid>

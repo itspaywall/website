@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     makeStyles,
     Card,
@@ -19,8 +19,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        justify: "center",
-        marginBottom: 128,
+        marginBottom: 280,
         [theme.breakpoints.down("sm")]: {
             height: 200,
         },
@@ -31,9 +30,6 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
     },
     card: {
-        margin: 32,
-        marginLeft: 0,
-        marginRight: 0,
         paddingLeft: 16,
         paddingRight: 16,
         textAlign: "center",
@@ -42,27 +38,38 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     cardTitle: {
-        margin: 16,
         marginTop: 32,
-        marginBottom: 0,
+        margin: 16,
+        color: "#5F6368",
+        textAlign: "center",
+    },
+    cardSubtitle: {
+        margin: 8,
+        fontSize: 16,
         color: "#5F6368",
         textAlign: "center",
     },
     form: {
+        margin: 16,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        padding: 16,
     },
     item: {
+        margin: 8,
         width: "100%",
+    },
+    links: {
+        margin: 16,
+    },
+    link: {
         margin: 8,
         textDecoration: "none",
     },
 }));
 
-function Reset(props) {
+function ResetPassword(props) {
     const classes = useStyles();
 
     const canBeSubmitted = () => {
@@ -70,57 +77,66 @@ function Reset(props) {
         return email.length > 0;
     };
 
+    useEffect(() => {
+        document.title = "Reset your password";
+    }, []);
+
     return (
         <Grid container={true} className={classes.root}>
-            <Hidden smDown>
+            <Hidden smDown={true}>
                 <Grid item={true} className={classes.header} xs={12}>
                     <Typography variant="h3">Reset your password</Typography>
-                    <Typography variant="h5">
-                        Enter a new password for your account
-                    </Typography>
+                    <Typography variant="h5">Enter a new password</Typography>
                 </Grid>
             </Hidden>
 
             <Grid item={true} xs={12} md={3} className={classes.card}>
                 <Card>
-                    <Hidden mdUp>
+                    <Hidden mdUp={true}>
                         <Typography variant="h5" className={classes.cardTitle}>
                             Reset your password
                         </Typography>
+                        <Typography className={classes.cardSubtitle}>
+                            Enter a new password
+                        </Typography>
                     </Hidden>
-                    <CardContent className={classes.form}>
-                        <TextField
-                            className={classes.item}
-                            label="New Password"
-                            type="password"
-                            name="password"
-                            variant="outlined"
-                            required={true}
-                            fullWidth={true}
-                        />
+                    <CardContent>
+                        <div className={classes.form}>
+                            <TextField
+                                className={classes.item}
+                                label="New Password"
+                                type="password"
+                                name="password"
+                                variant="outlined"
+                                required={true}
+                                fullWidth={true}
+                            />
 
-                        <TextField
-                            className={classes.item}
-                            label="Confirm Password"
-                            type="password"
-                            name="confirmPassword"
-                            variant="outlined"
-                            required={true}
-                            fullWidth={true}
-                        />
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            className={classes.item}
-                            disabled={canBeSubmitted}
-                        >
-                            Continue
-                        </Button>
-                        <Hidden mdUp>
-                            <Link className={classes.item} to="/login">
-                                Login
-                            </Link>
-                        </Hidden>
+                            <TextField
+                                className={classes.item}
+                                label="Confirm Password"
+                                type="password"
+                                name="confirmPassword"
+                                variant="outlined"
+                                required={true}
+                                fullWidth={true}
+                            />
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                className={classes.item}
+                                disabled={canBeSubmitted}
+                            >
+                                Continue
+                            </Button>
+                        </div>
+                        <div className={classes.links}>
+                            <Hidden mdUp={true}>
+                                <Link className={classes.link} to="/login">
+                                    Login to Account
+                                </Link>
+                            </Hidden>
+                        </div>
                     </CardContent>
                 </Card>
             </Grid>
@@ -128,4 +144,4 @@ function Reset(props) {
     );
 }
 
-export default Reset;
+export default ResetPassword;

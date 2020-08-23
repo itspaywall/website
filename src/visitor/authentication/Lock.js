@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     makeStyles,
     Card,
@@ -19,8 +19,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        justify: "center",
-        marginBottom: 300,
+        marginBottom: 280,
         [theme.breakpoints.down("sm")]: {
             height: 200,
         },
@@ -31,9 +30,6 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
     },
     card: {
-        margin: 32,
-        marginLeft: 0,
-        marginRight: 0,
         paddingLeft: 16,
         paddingRight: 16,
         textAlign: "center",
@@ -42,29 +38,33 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     cardTitle: {
-        margin: 16,
         marginTop: 32,
+        margin: 16,
         color: "#5F6368",
         textAlign: "center",
     },
     cardSubtitle: {
-        margin: 16,
-        marginBottom: 0,
+        margin: 8,
+        fontSize: 16,
         color: "#5F6368",
         textAlign: "center",
-        fontSize: 16,
     },
     form: {
+        margin: 16,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        padding: 16,
     },
     item: {
-        width: "100%",
         margin: 8,
-        marginTop: 0,
+        width: "100%",
+    },
+    links: {
+        margin: 16,
+    },
+    link: {
+        margin: 8,
         textDecoration: "none",
     },
 }));
@@ -77,11 +77,15 @@ function Lock(props) {
         return email.length > 0;
     };
 
+    useEffect(() => {
+        document.title = "Session locked";
+    }, []);
+
     return (
         <Grid container={true} className={classes.root}>
-            <Hidden smDown>
+            <Hidden smDown={true}>
                 <Grid item={true} className={classes.header} xs={12}>
-                    <Typography variant="h3">Your session is locked</Typography>
+                    <Typography variant="h3">Login to continue</Typography>
                     <Typography variant="h5">
                         Due to inactivity, your session is locked.
                     </Typography>
@@ -90,7 +94,7 @@ function Lock(props) {
 
             <Grid item={true} xs={12} md={3} className={classes.card}>
                 <Card>
-                    <Hidden mdUp>
+                    <Hidden mdUp={true}>
                         <Typography variant="h5" className={classes.cardTitle}>
                             Login to continue
                         </Typography>
@@ -98,36 +102,42 @@ function Lock(props) {
                             Due to inactivity, your session is locked.
                         </Typography>
                     </Hidden>
-                    <CardContent className={classes.form}>
-                        <TextField
-                            className={classes.item}
-                            label="Email Address"
-                            name="emailAddress"
-                            variant="outlined"
-                            fullWidth={true}
-                            editable={false}
-                        />
+                    <CardContent>
+                        <div className={classes.form}>
+                            <TextField
+                                className={classes.item}
+                                label="Email Address"
+                                name="emailAddress"
+                                variant="outlined"
+                                fullWidth={true}
+                                editable={false}
+                            />
 
-                        <TextField
-                            className={classes.item}
-                            label="Password"
-                            type="password"
-                            name="password"
-                            variant="outlined"
-                            required={true}
-                            fullWidth={true}
-                        />
-                        <Button
-                            variant="contained"
-                            color="secondary"
-                            className={classes.item}
-                            disabled={canBeSubmitted}
-                        >
-                            Continue
-                        </Button>
-                        <Link className={classes.item} to="/forgot-password">
-                            Recover Account
-                        </Link>
+                            <TextField
+                                className={classes.item}
+                                label="Password"
+                                type="password"
+                                name="password"
+                                variant="outlined"
+                                required={true}
+                                fullWidth={true}
+                            />
+                            <Button
+                                variant="contained"
+                                color="secondary"
+                                className={classes.item}
+                                disabled={canBeSubmitted}
+                            >
+                                Continue
+                            </Button>
+                        </div>
+                        <div className={classes.links}>
+                            <Hidden mdUp={true}>
+                                <Link className={classes.link} to="/login">
+                                    Login to Account
+                                </Link>
+                            </Hidden>
+                        </div>
                     </CardContent>
                 </Card>
             </Grid>
