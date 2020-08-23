@@ -10,6 +10,8 @@ import IconButton from "@material-ui/core/IconButton";
 import { useHistory } from "react-router-dom";
 import FAQsIcon from "@material-ui/icons/Help";
 import PricingIcon from "@material-ui/icons/MonetizationOn";
+import LoginIcon from "@material-ui/icons/AccountCircle";
+import RegisterIcon from "@material-ui/icons/AddCircle";
 
 const useStyles = makeStyles({
     list: {
@@ -24,6 +26,18 @@ const useStyles = makeStyles({
 });
 
 const links = [
+    {
+        id: "login",
+        title: "Login",
+        url: "/login",
+        icon: <LoginIcon />,
+    },
+    {
+        id: "register",
+        title: "Register",
+        url: "/register",
+        icon: <RegisterIcon />,
+    },
     {
         id: "pricing",
         title: "Pricing",
