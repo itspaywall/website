@@ -19,9 +19,6 @@ const useStyles = makeStyles((theme) => ({
         padding: 0,
         fontSize: 20,
         fontWeight: 600,
-        [theme.breakpoints.up("xl")]: {
-            fontSize: 32,
-        },
         color: "#5F6368",
         textAlign: "center",
         paddingBottom: 16,
