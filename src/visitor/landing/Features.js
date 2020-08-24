@@ -8,12 +8,16 @@ import Grid from "@material-ui/core/Grid";
 import Hidden from "@material-ui/core/Hidden";
 
 const useStyles = makeStyles((theme) => ({
+    container: {
+        backgroundImage: `url(${"assets/images/bg.png"})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+    },
     card: {
         width: "60%",
         marginLeft: "auto",
         marginRight: "auto",
         marginTop: 128,
-
         [theme.breakpoints.down("md")]: {
             width: "90%",
         },
@@ -84,36 +88,38 @@ const list = [
 function Features() {
     const classes = useStyles();
     return (
-        <Card className={classes.card} elevation={4}>
-            <CardContent className={classes.cardContent}>
-                <Typography className={classes.title}>
-                    Everything you need in one place
-                </Typography>
-                <Hidden smDown={true}>
-                    <img
-                        src="assets/images/features.svg"
-                        className={classes.image}
-                        alt="A friendly work environment"
-                    />
-                </Hidden>
-                <Grid container={true}>
-                    {list.map((feature, index) => (
-                        <Grid
-                            item={true}
-                            xs={12}
-                            md={4}
-                            className={classes.feature}
-                        >
-                            <Feature
-                                title={feature.title}
-                                subtitle={feature.subtitle}
-                                cover={feature.cover}
-                            />
-                        </Grid>
-                    ))}
-                </Grid>
-            </CardContent>
-        </Card>
+        <div className={classes.container}>
+            <Card className={classes.card} elevation={4}>
+                <CardContent className={classes.cardContent}>
+                    <Typography className={classes.title}>
+                        Everything you need in one place
+                    </Typography>
+                    <Hidden smDown={true}>
+                        <img
+                            src="assets/images/features.svg"
+                            className={classes.image}
+                            alt="A friendly work environment"
+                        />
+                    </Hidden>
+                    <Grid container={true}>
+                        {list.map((feature, index) => (
+                            <Grid
+                                item={true}
+                                xs={12}
+                                md={4}
+                                className={classes.feature}
+                            >
+                                <Feature
+                                    title={feature.title}
+                                    subtitle={feature.subtitle}
+                                    cover={feature.cover}
+                                />
+                            </Grid>
+                        ))}
+                    </Grid>
+                </CardContent>
+            </Card>
+        </div>
     );
 }
 
