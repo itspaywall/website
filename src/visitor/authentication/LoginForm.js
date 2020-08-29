@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     Button,
     InputAdornment,
@@ -6,6 +6,9 @@ import {
     TextField,
     makeStyles,
 } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
+import client from "../../server/api";
+import httpStatus from "../../util/httpStatus";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -21,8 +24,29 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function LoginForm(props) {
+    const { handleErrorMessage } = props;
     const classes = useStyles();
-    const canSubmit = () => false;
+    const [identifier, setIdentifier] = useState("");
+    const [password, setPassword] = useState("");
+
+    const history = useHistory();
+
+    const canSubmit = () => identifier && password;
+    const handleLogin = async () => {
+        try {
+            const response = await client.createSession(identifier, password);
+            const userAsString = JSON.stringify(response.data);
+            window.localStorage.setItem("user", userAsString);
+        } catch (error) {
+            const { response } = error;
+            if (response && response.status === httpStatus.BAD_REQUEST) {
+                handleErrorMessage(response.data.message);
+            } else {
+                console.log(response);
+                history.push("/error/500");
+            }
+        }
+    };
 
     return (
         <div className={classes.root}>
@@ -48,6 +72,8 @@ function LoginForm(props) {
                 }}
                 variant="outlined"
                 required={true}
+                value={identifier}
+                onChange={(event) => setIdentifier(event.target.value)}
             />
 
             <TextField
@@ -72,6 +98,8 @@ function LoginForm(props) {
                 }}
                 variant="outlined"
                 required={true}
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
             />
 
             <Button
@@ -79,7 +107,8 @@ function LoginForm(props) {
                 variant="contained"
                 color="secondary"
                 className={classes.item}
-                disabled={canSubmit}
+                disabled={!canSubmit()}
+                onClick={handleLogin}
                 value="firebase"
             >
                 Login
