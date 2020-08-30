@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     Button,
     InputAdornment,
@@ -6,6 +6,9 @@ import {
     TextField,
     makeStyles,
 } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
+import client from "../../server/api";
+import httpStatus from "../../util/httpStatus";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -21,8 +24,44 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function RegisterForm(props) {
+    const { handleErrorMessage } = props;
     const classes = useStyles();
-    const canSubmit = () => false;
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [emailAddress, setEmailAddress] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const history = useHistory();
+
+    const canSubmit = () => {
+        return (
+            firstName &&
+            lastName &&
+            emailAddress &&
+            password &&
+            password === confirmPassword
+        );
+    };
+    const handleRegister = async () => {
+        try {
+            const response = await client.createUser(
+                firstName,
+                lastName,
+                emailAddress,
+                password
+            );
+            const user = JSON.stringify(response.data);
+            window.localStorage.setItem("user", user);
+        } catch (error) {
+            const { response } = error;
+            if (response && response.status === httpStatus.BAD_REQUEST) {
+                handleErrorMessage(response.data.message);
+            } else {
+                console.log(response);
+                history.push("/error/500");
+            }
+        }
+    };
 
     return (
         <div className={classes.root}>
@@ -31,23 +70,17 @@ function RegisterForm(props) {
                 type="text"
                 name="firstName"
                 label="First Name"
-                validations={{
-                    minLength: 4,
-                }}
-                validationErrors={{
-                    minLength: "Minimum character length is 4.",
-                }}
                 InputProps={{
                     endAdornment: (
                         <InputAdornment position="end">
-                            <Icon className="text-20" color="action">
-                                person
-                            </Icon>
+                            <Icon color="action">person</Icon>
                         </InputAdornment>
                     ),
                 }}
                 variant="outlined"
                 required={true}
+                value={firstName}
+                onChange={(event) => setFirstName(event.target.value)}
             />
 
             <TextField
@@ -55,23 +88,17 @@ function RegisterForm(props) {
                 type="text"
                 name="lastName"
                 label="Last Name"
-                validations={{
-                    minLength: 4,
-                }}
-                validationErrors={{
-                    minLength: "Minimum character length is 4.",
-                }}
                 InputProps={{
                     endAdornment: (
                         <InputAdornment position="end">
-                            <Icon className="text-20" color="action">
-                                person
-                            </Icon>
+                            <Icon color="action">person</Icon>
                         </InputAdornment>
                     ),
                 }}
                 variant="outlined"
                 required={true}
+                value={lastName}
+                onChange={(event) => setLastName(event.target.value)}
             />
 
             <TextField
@@ -79,10 +106,6 @@ function RegisterForm(props) {
                 type="text"
                 name="email"
                 label="Email"
-                validations="isEmail"
-                validationErrors={{
-                    isEmail: "Please enter a valid email address.",
-                }}
                 InputProps={{
                     endAdornment: (
                         <InputAdornment position="end">
@@ -94,6 +117,8 @@ function RegisterForm(props) {
                 }}
                 variant="outlined"
                 required={true}
+                value={emailAddress}
+                onChange={(event) => setEmailAddress(event.target.value)}
             />
 
             <TextField
@@ -101,10 +126,6 @@ function RegisterForm(props) {
                 type="password"
                 name="password"
                 label="Password"
-                validations="equalsField:password-confirm"
-                validationErrors={{
-                    equalsField: "Passwords do not match.",
-                }}
                 InputProps={{
                     endAdornment: (
                         <InputAdornment position="end">
@@ -116,17 +137,15 @@ function RegisterForm(props) {
                 }}
                 variant="outlined"
                 required={true}
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
             />
 
             <TextField
                 className={classes.item}
                 type="password"
-                name="password-confirm"
+                name="confirmPassword"
                 label="Confirm Password"
-                validations="equalsField:password"
-                validationErrors={{
-                    equalsField: "Passwords do not match.",
-                }}
                 InputProps={{
                     endAdornment: (
                         <InputAdornment position="end">
@@ -138,6 +157,8 @@ function RegisterForm(props) {
                 }}
                 variant="outlined"
                 required={true}
+                value={confirmPassword}
+                onChange={(event) => setConfirmPassword(event.target.value)}
             />
 
             <Button
@@ -145,7 +166,8 @@ function RegisterForm(props) {
                 variant="contained"
                 color="primary"
                 className={classes.item}
-                disabled={canSubmit}
+                disabled={!canSubmit()}
+                onClick={handleRegister}
                 value="legacy"
             >
                 Register

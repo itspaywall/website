@@ -28,15 +28,14 @@ function LoginForm(props) {
     const classes = useStyles();
     const [identifier, setIdentifier] = useState("");
     const [password, setPassword] = useState("");
-
     const history = useHistory();
 
     const canSubmit = () => identifier && password;
     const handleLogin = async () => {
         try {
             const response = await client.createSession(identifier, password);
-            const userAsString = JSON.stringify(response.data);
-            window.localStorage.setItem("user", userAsString);
+            const user = JSON.stringify(response.data);
+            window.localStorage.setItem("user", user);
         } catch (error) {
             const { response } = error;
             if (response && response.status === httpStatus.BAD_REQUEST) {

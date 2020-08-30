@@ -57,16 +57,12 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         alignItems: "center",
     },
-    item: {
-        margin: 8,
-        width: "100%",
-    },
     links: {
         marginTop: 16,
     },
     link: {
         display: "block",
-        margin: 8,
+        marginTop: 8,
         textDecoration: "none",
     },
 }));
