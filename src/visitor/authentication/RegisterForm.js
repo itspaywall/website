@@ -9,6 +9,7 @@ import {
 import { useHistory } from "react-router-dom";
 import client from "../../server/api";
 import httpStatus from "../../util/httpStatus";
+import crossStorage from "../../server/crossStorage";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -51,7 +52,17 @@ function RegisterForm(props) {
                 password
             );
             const user = JSON.stringify(response.data);
-            window.localStorage.setItem("user", user);
+            try {
+                const client = await crossStorage.connection;
+                client.set("user", user);
+                window.location = "http://localhost:4000/analytics";
+            } catch (error) {
+                console.log(
+                    "Cannot establish connection to the cross storage hub."
+                );
+                console.log(error);
+                history.push("/error/500");
+            }
         } catch (error) {
             const { response } = error;
             if (response && response.status === httpStatus.BAD_REQUEST) {

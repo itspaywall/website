@@ -12,9 +12,9 @@ export function newClient(version = DEFAULT_API_VERSION) {
                 emailAddress,
                 password,
             }),
-        createSession: (identifier, password) =>
+        createSession: (emailAddress, password) =>
             axios.post(`${prefix}/sessions`, {
-                identifier,
+                emailAddress,
                 password,
             }),
     };

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Cross Storage Hub | Hubble</title>
+    </head>
+    <body>
+        <script type="text/javascript" src="./hub.min.js"></script>
+        <script>
+            /* Limit requests to any client running on localhost:300x */
+            CrossStorageHub.init([
+                {
+                    origin: /.*localhost:\d\d\d\d$/,
+                    allow: ["get", "set", "del"],
+                },
+                {
+                    origin: /.*hubblesuite.com$/,
+                    allow: ["get", "set", "del"],
+                },
+            ]);
+        </script>
+    </body>
+</html>
