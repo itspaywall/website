@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
     makeStyles,
     Card,
@@ -38,9 +38,14 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     cardTitle: {
-        marginTop: 32,
-        margin: 16,
+        marginTop: 16,
+        marginBottom: 16,
         color: "#5F6368",
+        textAlign: "center",
+    },
+    error: {
+        marginTop: 16,
+        marginBottom: 16,
         textAlign: "center",
     },
     form: {
@@ -50,22 +55,19 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         alignItems: "center",
     },
-    item: {
-        margin: 8,
-        width: "100%",
-    },
     links: {
-        margin: 16,
+        marginTop: 16,
     },
     link: {
         display: "block",
-        margin: 8,
+        marginTop: 8,
         textDecoration: "none",
     },
 }));
 
 function Register(props) {
     const classes = useStyles();
+    const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
         document.title = "Register | Hubble Subscriptions";
@@ -77,20 +79,28 @@ function Register(props) {
                 <Grid item={true} className={classes.header} xs={12}>
                     <Typography variant="h3">Create your account</Typography>
                     <Typography variant="h5">
-                        One step away from awesomeness.
+                        One step away from awesomeness
                     </Typography>
                 </Grid>
             </Hidden>
 
             <Grid item={true} xs={12} md={3} className={classes.card}>
                 <Card>
-                    <Hidden mdUp={true}>
-                        <Typography variant="h5" className={classes.cardTitle}>
-                            Create your account
-                        </Typography>
-                    </Hidden>
                     <CardContent>
-                        <RegisterForm />
+                        <Hidden mdUp={true}>
+                            <Typography
+                                variant="h5"
+                                className={classes.cardTitle}
+                            >
+                                Create your account
+                            </Typography>
+                        </Hidden>
+                        {errorMessage && (
+                            <Typography className={classes.error} color="error">
+                                {errorMessage}
+                            </Typography>
+                        )}
+                        <RegisterForm handleErrorMessage={setErrorMessage} />
                         <div className={classes.links}>
                             <Hidden mdUp={true}>
                                 <Link className={classes.link} to="/login">
