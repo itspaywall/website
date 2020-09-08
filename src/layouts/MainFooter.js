@@ -4,6 +4,7 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
+import Icon from "@material-ui/core/Icon";
 
 const useStyles = makeStyles((theme) => ({
     footer: {
@@ -14,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
     },
     about: {
         marginTop: 16,
+    },
+    contact: {
+        marginTop: 4,
     },
     logo: {
         width: 56,
@@ -26,6 +30,11 @@ const useStyles = makeStyles((theme) => ({
         fontSize: 14,
         color: theme.palette.text.primary,
         textDecoration: "none",
+    },
+    icon: {
+        fontSize: 16,
+        paddingTop: 2,
+        marginRight: 8,
     },
     copyright: {
         marginTop: 8,
@@ -213,6 +222,20 @@ function MainFooter() {
                         Hubble offers an easy-to-integrate subscription
                         management service to startups and businesses, with a
                         variety of customer acquisition and retention tools.
+                    </Typography>
+                    <Typography className={classes.contact}>
+                        <Icon className={classes.icon}>email</Icon>
+                        <a
+                            href="mailto:contact@hubbsuite.com"
+                            className={classes.link}
+                        >
+                            contact@hubblesuite.com
+                        </a>
+                        <br />
+                        <Icon className={classes.icon}>phone</Icon>
+                        <a href="tel:+918310843835" className={classes.link}>
+                            +91 83108 43835
+                        </a>
                     </Typography>
                 </Grid>
                 <Grid item={true} xs={12} lg={8}>
