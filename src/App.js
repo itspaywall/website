@@ -1,3 +1,7 @@
+/* This is the main component of the Single Page Application (SPA). It includes CSS baseline
+ * and theme provider from Material UI, the main router, and other things.
+ */
+
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { CssBaseline } from "@material-ui/core";
