@@ -2,11 +2,8 @@ import React from "react";
 import { Grid, Button, Card, CardContent, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-const planHeight = 500;
-const featuresHeight = 300;
-
-const smPlanHeight = 600;
-const smFeaturesHeight = 350;
+const featuresHeight = 450;
+const smFeaturesHeight = 430;
 
 const useStyles = makeStyles((theme) => ({
     header: {
@@ -34,6 +31,8 @@ const useStyles = makeStyles((theme) => ({
     body: {
         color: "#5F6368",
         marginTop: -192,
+        maxWidth: 1366,
+        margin: "auto",
     },
     cards: {
         width: "100%",
@@ -66,16 +65,16 @@ const useStyles = makeStyles((theme) => ({
     },
     planCard: {
         padding: 16,
-        height: planHeight,
         marginLeft: 8,
         marginRight: 8,
 
         [theme.breakpoints.down("md")]: {
             marginTop: 32,
-            height: smPlanHeight,
         },
     },
     planHeading: {
+        display: "block",
+        height: "15%",
         color: "#5F6368",
         textAlign: "center",
         marginTop: 16,
@@ -93,6 +92,7 @@ const useStyles = makeStyles((theme) => ({
         marginTop: 8,
     },
     includes: {
+        display: "block",
         color: "#5F6368",
         marginTop: 16,
         fontSize: 14,
@@ -100,8 +100,6 @@ const useStyles = makeStyles((theme) => ({
     features: {
         color: "#5F6368",
         textAlign: "center",
-        display: "flex",
-        flexDirection: "column",
         height: featuresHeight,
 
         [theme.breakpoints.down("md")]: {
@@ -119,8 +117,8 @@ const useStyles = makeStyles((theme) => ({
     },
     planAction: {
         width: "80%",
-        marginTop: 16,
-        marginBottom: 16,
+        marginTop: 20,
+        marginBottom: 20,
         marginLeft: "auto",
         marginRight: "auto",
         display: "block",
@@ -129,43 +127,79 @@ const useStyles = makeStyles((theme) => ({
 
 const plans = [
     {
-        title: "Starter",
-        subtitle: "The plan for businesses that need simple online payments.",
-        price: "Contact sales",
+        title: "Free",
+        target:"_self",
+        href:"https://hubblesuite.com/register",
+        subtitle: "For businesses that need simple online payments.",
+        price: "Get Started",
         features: [
             "Account, Subscription, and Plan Management",
-            "Basic Analytics",
+            "Mobile App",
+            "Email Reminders",
+            "1 API Key and Webhooks",
+            "Single Currency",
+            "1 Team",
+            "5 Collaborators",
+            "Hosted Payement Page",
+            "Upto 50 Active Subscriptions",
+            "Templates"
+        ],
+    },
+    {
+        title: "Starter",
+        target:"_blank",
+        href:"mailto:contact@hubblesuite.com",
+        subtitle: "For small businesses that need an economic solution.",
+        price: "Contact sales",
+        includes: "Includes everything in Free",
+        features: [
+            "SMS and Whatsapp Reminders",
             "Basic Reports",
-            "Multiple API Keys and Webhooks",
+            "2 API Keys",
             "Online Support",
-            "10 Teams",
+            "Mutiple Currencies",
+            "5 Teams",
+            "25 Collaborators",
+            "500 Active Subscriptions",
+            "Coupons",
+            "Gift Cards"
         ],
     },
     {
         title: "Professional",
-        subtitle: "The plan for businesses that are growth oriented.",
+        target:"_blank",
+        href:"mailto:contact@hubblesuite.com",
+        subtitle: "For businesses that are growth oriented.",
         price: "Contact sales",
         includes: "Includes everything in Starter",
         features: [
             "Advanced Analytics",
             "Advanced Reports",
-            "Multiple Currencies",
-            "Audit Logs",
-            "25 Teams",
+            "Automated Call Reminders",
+            "10 API Keys",
+            "10 Teams",
+            "50 Collaborators",
+            "5000 Active Subscriptions",
+            "Fraud Management",
+            "Dunning Management",
+            "Audit Logs"
         ],
     },
     {
         title: "Enterprise",
+        target:"_blank",
+        href:"mailto:contact@hubblesuite.com",
         subtitle:
-            "The plan for businesses that need flexibility and scalability.",
+            "For businesses that need flexibility and scalability.",
         price: "Contact sales",
         includes: "Includes everything in Professional",
         features: [
-            "Professional Services",
             "Unlimited API Keys and Webhooks",
+            "Unlimited Teams",
+            "Unlimited Active Subscriptions",
+            "Professional Services",
             "IP Whitelisting",
-            "50 Teams",
-            "Dedicated Account Manager",
+            "Detected Account Manager"
         ],
     },
 ];
@@ -191,7 +225,7 @@ function Plans(props) {
                         The most advanced subscription management platform at
                         simple and affordable pricing.
                         <br />
-                        You can always try for 21 days, free of cost!
+                       
                     </Typography>
                 </div>
             </div>
@@ -241,8 +275,8 @@ function Plans(props) {
                                     </CardContent>
 
                                     <a
-                                        href="mailto:samuelrowe1999@gmail.com"
-                                        target="_blank"
+                                        href={data.href}
+                                        target={data.target}
                                         style={{ textDecoration: "none" }}
                                         rel="noopener noreferrer"
                                     >
@@ -251,7 +285,7 @@ function Plans(props) {
                                             color="secondary"
                                             className={classes.planAction}
                                         >
-                                            Contact Sales
+                                            {data.price}
                                         </Button>
                                     </a>
                                 </Card>

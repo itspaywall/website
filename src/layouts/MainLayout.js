@@ -1,3 +1,15 @@
+/*
+ * In the website, all the pages have a toolbar, a content area, and a footer.
+ * Instead of rewriting these three components in all the pages, we use a layout.
+ * A layout defines the structure of a single page. For example, on a laptop of
+ * size large and extra large, the MainLayout component defines a structure with
+ * menus at the top and a footer at the bottom. The MainLayout described for LG
+ * and XL will look awkward on smaller screens. So the MainLayout is designed to
+ * change itself based on the screen size. This capability to change based on the
+ * screen size is called responsiveness.
+ */
+
+
 import React, { Suspense } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 

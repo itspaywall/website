@@ -1,3 +1,7 @@
+/*
+ * This contains the footer of the page and is independent for all screens.
+ */
+
 import React from "react";
 import { makeStyles } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
