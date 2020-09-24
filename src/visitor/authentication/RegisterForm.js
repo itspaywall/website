@@ -55,7 +55,7 @@ function RegisterForm(props) {
             try {
                 const client = await crossStorage.connection;
                 client.set("user", user);
-                window.location = "http://localhost:4000/analytics";
+                window.location = `${process.env.REACT_APP_CONSOLE_URL}/analytics`;
             } catch (error) {
                 console.log(
                     "Cannot establish connection to the cross storage hub."
