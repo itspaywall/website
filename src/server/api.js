@@ -3,7 +3,7 @@ import axios from "axios";
 const DEFAULT_API_VERSION = "v1";
 
 export function newClient(version = DEFAULT_API_VERSION) {
-    const prefix = `http://localhost:3001/api/${version}`;
+    const prefix = `{process.env.REACT_APP_SERVER_URL}/api/${version}`;
     return {
         createUser: (firstName, lastName, emailAddress, password) =>
             axios.post(`${prefix}/users`, {
