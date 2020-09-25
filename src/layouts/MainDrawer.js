@@ -12,6 +12,8 @@ import FAQsIcon from "@material-ui/icons/Help";
 import PricingIcon from "@material-ui/icons/MonetizationOn";
 import LoginIcon from "@material-ui/icons/AccountCircle";
 import RegisterIcon from "@material-ui/icons/AddCircle";
+import APIIcon from "@material-ui/icons/Code";
+import GuidesIcon from "@material-ui/icons/Class";
 
 const useStyles = makeStyles({
     list: {
@@ -49,6 +51,20 @@ const links = [
         title: "FAQs",
         url: "/faqs",
         icon: <FAQsIcon />,
+    },
+    {
+        id: "api",
+        title: "API Reference",
+        url: `${process.env.REACT_APP_DOCS_URL}/api`,
+        icon: <APIIcon />,
+        external: true,
+    },
+    {
+        id: "guides",
+        title: "Guides",
+        url: `${process.env.REACT_APP_DOCS_URL}/guides`,
+        icon: <GuidesIcon />,
+        external: true,
     },
 ];
 

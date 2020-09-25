@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { AppBar, Button, Toolbar, makeStyles } from "@material-ui/core";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 import { useHistory } from "react-router-dom";
 import clsx from "clsx";
 import Box from "@material-ui/core/Box";
@@ -30,6 +32,9 @@ const useStyles = makeStyles((theme) => ({
         marginRight: 16,
         borderRadius: 0,
     },
+    menuItem: {
+        fontSize: 14,
+    },
 }));
 
 const links = [
@@ -45,10 +50,52 @@ const links = [
     },
 ];
 
+const resources = [
+    {
+        title: "API REFERENCE",
+        external: true,
+        url: `${process.env.REACT_APP_DOCS_URL}/api`,
+    },
+    {
+        title: "GUIDES",
+        external: true,
+        url: `${process.env.REACT_APP_DOCS_URL}/guides`,
+    },
+];
+
 function MainToolbar(props) {
     const classes = useStyles();
     const history = useHistory();
+    const [resourceMenuAnchor, setResourceMenuAnchor] = useState(null);
     const handleLink = (url) => () => history.push(url);
+
+    const handleMenuItem = (item) => () => {
+        if (item.external) {
+            window.location = item.url;
+        }
+    };
+
+    const handleResourceMenuClose = () => {
+        setResourceMenuAnchor(null);
+    };
+
+    const renderMenu = () => (
+        <Menu
+            anchorEl={resourceMenuAnchor}
+            open={resourceMenuAnchor !== null}
+            onClose={handleResourceMenuClose}
+            className={classes.menu}
+        >
+            {resources.map((resource) => (
+                <MenuItem
+                    onClick={handleMenuItem(resource)}
+                    className={classes.menuItem}
+                >
+                    {resource.title}
+                </MenuItem>
+            ))}
+        </Menu>
+    );
 
     return (
         <AppBar position="fixed" className={clsx(classes.appBar)}>
@@ -73,6 +120,12 @@ function MainToolbar(props) {
                             {item.title}
                         </Button>
                     ))}
+                    <Button
+                        onClick={(event) => setResourceMenuAnchor(event.target)}
+                        className={classes.button}
+                    >
+                        RESOURCES
+                    </Button>
                 </Box>
                 <Button
                     className={classes.action}
@@ -89,6 +142,7 @@ function MainToolbar(props) {
                     TRY FOR FREE
                 </Button>
             </Toolbar>
+            {renderMenu()}
         </AppBar>
     );
 }
