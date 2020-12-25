@@ -6,9 +6,22 @@ const featuresHeight = 450;
 const smFeaturesHeight = 430;
 
 const useStyles = makeStyles((theme) => ({
+    "@keyframes gradient": {
+        "0%": {
+            backgroundPosition: "0% 50%",
+        },
+        "50%": {
+            backgroundPosition: "100% 50%",
+        },
+        "100%": {
+            backgroundPosition: "0% 50%",
+        },
+    },
     header: {
         height: 540,
         background: "linear-gradient(45deg, #2196F3 30%, #3F51B5 90%)",
+        backgroundSize: "200% 200%",
+        animation: "$gradient 5s ease infinite",
         color: theme.palette.primary.contrastText,
         display: "flex",
         [theme.breakpoints.down("md")]: {
@@ -128,8 +141,8 @@ const useStyles = makeStyles((theme) => ({
 const plans = [
     {
         title: "Free",
-        target:"_self",
-        href:"https://hubblesuite.com/register",
+        target: "_self",
+        href: "https://hubblesuite.com/register",
         subtitle: "For businesses that need simple online payments.",
         price: "Get Started",
         features: [
@@ -142,13 +155,13 @@ const plans = [
             "5 Collaborators",
             "Hosted Payement Page",
             "Upto 50 Active Subscriptions",
-            "Templates"
+            "Templates",
         ],
     },
     {
         title: "Starter",
-        target:"_blank",
-        href:"mailto:contact@hubblesuite.com",
+        target: "_blank",
+        href: "mailto:contact@hubblesuite.com",
         subtitle: "For small businesses that need an economic solution.",
         price: "Contact sales",
         includes: "Includes everything in Free",
@@ -162,13 +175,13 @@ const plans = [
             "25 Collaborators",
             "500 Active Subscriptions",
             "Coupons",
-            "Gift Cards"
+            "Gift Cards",
         ],
     },
     {
         title: "Professional",
-        target:"_blank",
-        href:"mailto:contact@hubblesuite.com",
+        target: "_blank",
+        href: "mailto:contact@hubblesuite.com",
         subtitle: "For businesses that are growth oriented.",
         price: "Contact sales",
         includes: "Includes everything in Starter",
@@ -182,15 +195,14 @@ const plans = [
             "5000 Active Subscriptions",
             "Fraud Management",
             "Dunning Management",
-            "Audit Logs"
+            "Audit Logs",
         ],
     },
     {
         title: "Enterprise",
-        target:"_blank",
-        href:"mailto:contact@hubblesuite.com",
-        subtitle:
-            "For businesses that need flexibility and scalability.",
+        target: "_blank",
+        href: "mailto:contact@hubblesuite.com",
+        subtitle: "For businesses that need flexibility and scalability.",
         price: "Contact sales",
         includes: "Includes everything in Professional",
         features: [
@@ -199,7 +211,7 @@ const plans = [
             "Unlimited Active Subscriptions",
             "Professional Services",
             "IP Whitelisting",
-            "Detected Account Manager"
+            "Detected Account Manager",
         ],
     },
 ];
@@ -225,7 +237,6 @@ function Plans(props) {
                         The most advanced subscription management platform at
                         simple and affordable pricing.
                         <br />
-                       
                     </Typography>
                 </div>
             </div>

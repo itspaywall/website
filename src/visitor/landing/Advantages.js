@@ -11,11 +11,21 @@ import MobileIcon from "@material-ui/icons/MobileFriendly";
 import Advantage from "./Advantage";
 
 const useStyles = makeStyles((theme) => ({
+    "@keyframes gradient": {
+        "0%": {
+            backgroundPosition: "0% 50%",
+        },
+        "50%": {
+            backgroundPosition: "100% 50%",
+        },
+        "100%": {
+            backgroundPosition: "0% 50%",
+        },
+    },
     header: {
         height: 400,
-        background:
-            "linear-gradient(90deg, rgba(29,161,242,1) 0%, rgba(222,0,255,1) 100%)",
-        backgroundSize: "100% 100%",
+        background: "linear-gradient(45deg, #2196F3 30%, #3F51B5 90%)",
+        backgroundSize: "200% 200%",
         animation: "$gradient 5s ease infinite",
         color: theme.palette.primary.contrastText,
         display: "flex",
@@ -43,6 +53,9 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
         fontSize: 20,
         marginTop: 16,
+        maxWidth: "50%",
+        marginLeft: "auto",
+        marginRight: "auto",
     },
     card: {
         width: "60%",
@@ -72,13 +85,13 @@ const list = [
     {
         title: "Actionable Insights",
         subtitle:
-            "Get better insights into your customers behavior through cohort analytics and AI powered predictions.",
+            "Get better insights into your customers behavior through cohort analytics.",
         icon: InsightsIcon,
     },
     {
-        title: "Build, Scale, Innovate",
+        title: "Hosted Payment Pages",
         subtitle:
-            "Each business has different requirements, it could be the user traffic, or the business model, or anything else.",
+            "Accept payments online, without writing a single line of code. Your business can go online immediately.",
         icon: BuildIcon,
     },
     {
@@ -107,8 +120,11 @@ function Advantages() {
                         color="inherit"
                         className={classes.subtitle}
                     >
-                        Your billing challenges are now oppurtunities with
-                        Hubble Subscriptions.
+                        The primary goal of your subscription business is to
+                        quickly enter the market. You shouldn't spend too much
+                        time on managing your subscriptions. Paywall allows you
+                        to easily integrate subscription lifecycle management in
+                        less than five minutes!
                     </Typography>
                 </div>
             </div>

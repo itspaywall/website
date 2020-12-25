@@ -1,30 +1,17 @@
 import React from "react";
 import Feature from "./Feature";
 import { makeStyles } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
+import { Typography, Container } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Hidden from "@material-ui/core/Hidden";
 
 const useStyles = makeStyles((theme) => ({
-    card: {
-        width: "60%",
-        marginLeft: "auto",
-        marginRight: "auto",
+    root: {
         marginTop: 128,
-
-        [theme.breakpoints.down("md")]: {
-            width: "90%",
-        },
-    },
-    cardContent: {
-        padding: 32,
     },
     image: {
         width: "auto",
         height: 500,
-        marginTop: 24,
         display: "block",
         marginLeft: "auto",
         marginRight: "auto",
@@ -56,9 +43,9 @@ const list = [
             "Charge your customers a fixed recurring charge, or based on the number of entities purchased or consumption.",
     },
     {
-        title: "Hosted Payment Pages",
+        title: "No Vendor Lock-In",
         subtitle:
-            "Accept payments online, without writing a single line of code. Your business can go online immediately.",
+            "If your business requirements grow beyond Paywall, you can tweak our source code to satisfy your needs.",
     },
     {
         title: "Multiple Currencies",
@@ -84,8 +71,8 @@ const list = [
 function Features() {
     const classes = useStyles();
     return (
-        <Card className={classes.card} elevation={4}>
-            <CardContent className={classes.cardContent}>
+        <div className={classes.root}>
+            <Container>
                 <Typography className={classes.title}>
                     Everything you need in one place
                 </Typography>
@@ -112,8 +99,8 @@ function Features() {
                         </Grid>
                     ))}
                 </Grid>
-            </CardContent>
-        </Card>
+            </Container>
+        </div>
     );
 }
 
