@@ -6,11 +6,19 @@ const useStyles = makeStyles((theme) => ({
     root: {
         marginTop: 16,
     },
+    icon: {
+        fontSize: 40,
+        display: "block",
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginBottom: 16,
+        color: theme.palette.secondary.main,
+    },
     title: {
         fontSize: 16,
         fontWeight: 600,
         color: "#5F6368",
-        textAlign: "left",
+        textAlign: "center",
         [theme.breakpoints.down("sm")]: {
             textAlign: "center",
         },
@@ -18,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     subtitle: {
         fontSize: 16,
         color: "#5F6368",
-        textAlign: "left",
+        textAlign: "center",
         [theme.breakpoints.down("sm")]: {
             textAlign: "center",
         },
@@ -27,10 +35,12 @@ const useStyles = makeStyles((theme) => ({
 
 function Feature(props) {
     const classes = useStyles();
-    const { title, subtitle } = props;
+    const { title, subtitle, icon } = props;
+    const Icon = icon;
 
     return (
         <div className={classes.root}>
+            <Icon className={classes.icon} />
             <Typography className={classes.title}>{title}</Typography>
             <Typography className={classes.subtitle}>{subtitle}</Typography>
         </div>

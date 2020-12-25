@@ -23,14 +23,14 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     header: {
-        height: 400,
+        height: 350,
         background: "linear-gradient(45deg, #2196F3 30%, #3F51B5 90%)",
         backgroundSize: "200% 200%",
         animation: "$gradient 5s ease infinite",
         color: theme.palette.primary.contrastText,
         display: "flex",
         [theme.breakpoints.down("md")]: {
-            height: 500,
+            height: 450,
         },
     },
     headerContent: {
@@ -56,6 +56,9 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: "50%",
         marginLeft: "auto",
         marginRight: "auto",
+        [theme.breakpoints.down("md")]: {
+            maxWidth: "100%",
+        },
     },
     card: {
         width: "60%",
@@ -104,6 +107,7 @@ const list = [
 
 function Advantages() {
     const classes = useStyles();
+
     return (
         <div>
             <div className={classes.header}>
@@ -120,10 +124,8 @@ function Advantages() {
                         color="inherit"
                         className={classes.subtitle}
                     >
-                        The primary goal of your subscription business should be
-                        to quickly enter the market. Paywall allows you to
-                        easily integrate subscription lifecycle management in
-                        less than five minutes!
+                        Paywall allows you to easily integrate subscription
+                        lifecycle management in less than five minutes.
                     </Typography>
                 </div>
             </div>

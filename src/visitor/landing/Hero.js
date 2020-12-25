@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Paper, Icon, Input, Button, makeStyles } from "@material-ui/core";
+import {
+    Container,
+    Paper,
+    Icon,
+    Input,
+    Button,
+    makeStyles,
+} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { useHistory } from "react-router-dom";
 
@@ -15,10 +22,12 @@ const useStyles = makeStyles((theme) => ({
             backgroundPosition: "0% 50%",
         },
     },
-    main: {
+    root: {
         backgroundImage: `url(${"assets/images/hero.jpg"})`,
+    },
+    main: {
         // backgroundAttachment: "fixed",
-        width: "100vw",
+        width: "100%",
         height: "100vh",
         display: "flex",
         flexDirection: "column",
@@ -43,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
         },
         [theme.breakpoints.up("lg")]: {
             fontSize: 52,
-            maxWidth: "50%",
+            maxWidth: "60%",
         },
     },
     subtitle: {
@@ -57,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
         },
         [theme.breakpoints.up("lg")]: {
             fontSize: 30,
-            maxWidth: "40%",
+            maxWidth: "60%",
         },
         color: "#5F6368",
     },
@@ -86,9 +95,6 @@ const useStyles = makeStyles((theme) => ({
         },
         paddingLeft: 16,
         paddingRight: 4,
-        // borderStyle: "solid",
-        // borderWidth: 2,
-        // borderColor: theme.palette.primary.dark
     },
     searchIcon: {
         color: "white",
@@ -119,49 +125,51 @@ function Hero() {
     };
 
     return (
-        <div
-            className={classes.main}
-            style={{ backgroundImage: "assets/images/screenshot.png" }}
-        >
-            <Typography className={classes.title}>
-                The fastest way to monetize your subscription service
-            </Typography>
-            <Typography className={classes.subtitle}>
-                Paywall is the simplest subscription management platform for
-                no-code app developers.
-            </Typography>
-            {/*<Button
-                    className={classes.button}
-                    size="large"
-                    color="primary"
-                    variant="contained"
-                    onClick={handleClick}
-                >
-                    TRY FOR FREE
-                </Button>*/}
+        <div className={classes.root}>
+            <Container className={classes.main}>
+                <Typography className={classes.title}>
+                    The fastest way to monetize your subscription service
+                </Typography>
+                <Typography className={classes.subtitle}>
+                    Paywall is the simplest subscription management platform for
+                    no-code app developers.
+                </Typography>
+                {/*<Button
+                        className={classes.button}
+                        size="large"
+                        color="primary"
+                        variant="contained"
+                        onClick={handleClick}
+                    >
+                        TRY FOR FREE
+                    </Button>*/}
 
-            <Paper className={classes.emailAddressPaper} elevation={5}>
-                <Input
-                    placeholder="Your email address"
-                    className={classes.search}
-                    disableUnderline={true}
-                    fullWidth={true}
-                    value={searchText}
-                    variant="outlined"
-                    onChange={handleSearch}
-                />
+                <Paper className={classes.emailAddressPaper} elevation={5}>
+                    <Input
+                        placeholder="Your email address"
+                        className={classes.search}
+                        disableUnderline={true}
+                        fullWidth={true}
+                        value={searchText}
+                        variant="outlined"
+                        onChange={handleSearch}
+                    />
 
-                <Button
-                    className={classes.subscribe}
-                    variant="contained"
-                    color="primary"
-                >
-                    <Icon className={classes.searchIcon}>mail</Icon>
-                    <span id="subscribeText" className={classes.subscribeText}>
-                        Subscribe
-                    </span>
-                </Button>
-            </Paper>
+                    <Button
+                        className={classes.subscribe}
+                        variant="contained"
+                        color="primary"
+                    >
+                        <Icon className={classes.searchIcon}>mail</Icon>
+                        <span
+                            id="subscribeText"
+                            className={classes.subscribeText}
+                        >
+                            Subscribe
+                        </span>
+                    </Button>
+                </Paper>
+            </Container>
         </div>
     );
 }
