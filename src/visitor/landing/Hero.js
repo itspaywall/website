@@ -1,42 +1,67 @@
-import React from "react";
-import { Button, makeStyles, CardMedia, Grid } from "@material-ui/core";
+import React, { useState } from "react";
+import {
+    Paper,
+    Container,
+    Icon,
+    Input,
+    Button,
+    makeStyles,
+} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import Hidden from "@material-ui/core/Hidden";
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     container: {
-        margin: 0,
-        padding: 0,
-        display: "flex",
-        flexDirection: "vertical",
-        justifyContent: "center",
-        alignItems: "center",
-        justify: "center",
         height: "100vh",
+        width: "100%",
+        display: "flex",
+        flexDirection: "row",
+    },
+    "@keyframes gradient": {
+        "0%": {
+            backgroundPosition: "0% 50%",
+        },
+        "50%": {
+            backgroundPosition: "100% 50%",
+        },
+        "100%": {
+            backgroundPosition: "0% 50%",
+        },
+    },
+    main: {
+        backgroundSize: "400% 400%",
+        background: "linear-gradient(45deg, #2196F3 30%, #3F51B5 70%)",
+        width: "60%",
+        height: "100vh",
+        animation: "$gradient 5s ease infinite",
+        padding: 120,
     },
     title: {
-        padding: 16,
-        margin: 0,
-        color: "#5F6368",
+        color: "#000000",
+        fontWeight: 600,
         lineHeight: 1.3,
         [theme.breakpoints.down("xs")]: {
             textAlign: "center",
             fontSize: 32,
         },
         [theme.breakpoints.up("lg")]: {
-            fontSize: 60,
+            fontSize: 52,
+            color: "white",
+            maxWidth: "85%",
         },
     },
     subtitle: {
+        marginTop: 32,
+        width: "100%",
         [theme.breakpoints.down("xs")]: {
             fontSize: 16,
             textAlign: "center",
         },
         [theme.breakpoints.up("lg")]: {
             fontSize: 30,
+            color: "white",
+            maxWidth: "85%",
         },
-        padding: 16,
         color: "#5F6368",
     },
     button: {
@@ -63,23 +88,61 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: 600,
         textAlign: "center",
     },
+    screenshot: {
+        marginTop: 120,
+        marginLeft: -200,
+        width: "40%",
+    },
     media: {
+        borderRadius: "0px 0px 8px 8px",
         [theme.breakpoints.up("xs")]: {
-            height: 360,
+            height: "auto",
             width: 360,
             margin: "auto",
         },
         [theme.breakpoints.up("lg")]: {
-            height: 480,
-            width: 480,
-            margin: "auto",
+            height: "auto",
+            width: "100%",
         },
         [theme.breakpoints.up("xl")]: {
-            height: 680,
-            width: 680,
-            margin: "auto",
+            height: "auto",
+            width: "100%",
         },
+        boxShadow: `0 1px 2px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.07), 0 4px 8px rgba(0,0,0,0.07), 0 8px 16px rgba(0,0,0,0.07), 0 16px 32px rgba(0,0,0,0.07), 0 32px 64px rgba(0,0,0,0.07)`,
     },
+
+    emailAddressPaper: {
+        display: "flex",
+        alignItems: "center",
+        height: 48,
+        width: "100%",
+        marginTop: 40,
+        borderRadius: 24,
+        [theme.breakpoints.up("md")]: {
+            maxWidth: 400,
+        },
+        paddingLeft: 16,
+        paddingRight: 4,
+        // borderStyle: "solid",
+        // borderWidth: 2,
+        // borderColor: theme.palette.primary.dark
+    },
+    searchIcon: {
+        color: "white",
+        marginRight: 8,
+    },
+    search: {
+        color: theme.palette.primary.light,
+        marginRight: 8,
+    },
+
+    subscribe: {
+        borderRadius: 24,
+        height: 40,
+        width: 200,
+        color: "white",
+    },
+    subscribeText: {},
 }));
 
 function Hero() {
@@ -87,35 +150,66 @@ function Hero() {
     const history = useHistory();
     const handleClick = () => history.push("/register");
 
+    const [searchText, setSearchText] = useState("");
+    const handleSearch = (event) => {
+        setSearchText(event.target.value);
+    };
+
     return (
-        <Grid container={true} className={classes.container}>
-            <Grid item={true} className={classes.item} xs={12} md={6}>
-                <Typography className={classes.title}>
-                    Hubble is an intuitive subscription management service.
-                </Typography>
-                <Typography className={classes.subtitle}>
-                    Manage your subscriptions seamlessly. We are here to help
-                    you move beyond spreadsheets and legacy tools.
-                </Typography>
-                <Button
-                    className={classes.button}
-                    size="large"
-                    color="primary"
-                    variant="contained"
-                    onClick={handleClick}
-                >
-                    TRY FOR FREE
-                </Button>
-            </Grid>
-            <Hidden smDown={true}>
-                <Grid item={true} className={classes.item} xs={12} md={4}>
-                    <CardMedia
-                        className={classes.media}
-                        image="assets/images/landing.svg"
-                    />
-                </Grid>
-            </Hidden>
-        </Grid>
+        <div className={classes.container}>
+            <div className={classes.main}>
+                <Container>
+                    <Typography className={classes.title}>
+                        The fastest way to monetize your subscription service
+                    </Typography>
+                    <Typography className={classes.subtitle}>
+                        Paywall is the simplest subscription management platform
+                        for no-code app developers.
+                    </Typography>
+                    {/*<Button
+                        className={classes.button}
+                        size="large"
+                        color="primary"
+                        variant="contained"
+                        onClick={handleClick}
+                    >
+                        TRY FOR FREE
+                    </Button>*/}
+
+                    <Paper className={classes.emailAddressPaper} elevation={1}>
+                        <Input
+                            placeholder="Your email address"
+                            className={classes.search}
+                            disableUnderline={true}
+                            fullWidth={true}
+                            value={searchText}
+                            onChange={handleSearch}
+                        />
+
+                        <Button
+                            className={classes.subscribe}
+                            variant="contained"
+                            color="primary"
+                        >
+                            <Icon className={classes.searchIcon}>mail</Icon>
+                            <span
+                                id="subscribeText"
+                                className={classes.subscribeText}
+                            >
+                                Subscribe
+                            </span>
+                        </Button>
+                    </Paper>
+                </Container>
+            </div>
+            <div className={classes.screenshot}>
+                <img
+                    className={classes.media}
+                    src="assets/images/screenshot.png"
+                    alt="Screenshot"
+                />
+            </div>
+        </div>
     );
 }
 
