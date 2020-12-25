@@ -13,7 +13,10 @@ import Advantage from "./Advantage";
 const useStyles = makeStyles((theme) => ({
     header: {
         height: 400,
-        background: "linear-gradient(45deg, #2196F3 30%, #3F51B5 90%)",
+        background:
+            "linear-gradient(90deg, rgba(29,161,242,1) 0%, rgba(222,0,255,1) 100%)",
+        backgroundSize: "100% 100%",
+        animation: "$gradient 5s ease infinite",
         color: theme.palette.primary.contrastText,
         display: "flex",
         [theme.breakpoints.down("md")]: {

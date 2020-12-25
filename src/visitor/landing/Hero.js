@@ -11,33 +11,25 @@ import Typography from "@material-ui/core/Typography";
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
-    container: {
-        height: "100vh",
-        width: "100%",
-        display: "flex",
-        flexDirection: "row",
-    },
-    "@keyframes gradient": {
-        "0%": {
-            backgroundPosition: "0% 50%",
-        },
-        "50%": {
-            backgroundPosition: "100% 50%",
-        },
-        "100%": {
-            backgroundPosition: "0% 50%",
-        },
-    },
     main: {
-        backgroundSize: "400% 400%",
-        background: "linear-gradient(45deg, #2196F3 30%, #3F51B5 70%)",
-        width: "60%",
+        backgroundImage: `url(${"assets/images/hero.jpg"})`,
+        backgroundAttachment: "fixed",
+        width: "100vw",
         height: "100vh",
-        animation: "$gradient 5s ease infinite",
-        padding: 120,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        scrollBehavior: "smooth",
     },
     title: {
-        color: "#000000",
+        background:
+            "linear-gradient(90deg, rgba(29,161,242,1) 0%, rgba(222,0,255,1) 100%)",
+        backgroundClip: "text",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        color: "transparent",
+        textAlign: "center",
         fontWeight: 600,
         lineHeight: 1.3,
         [theme.breakpoints.down("xs")]: {
@@ -46,21 +38,20 @@ const useStyles = makeStyles((theme) => ({
         },
         [theme.breakpoints.up("lg")]: {
             fontSize: 52,
-            color: "white",
-            maxWidth: "85%",
+            maxWidth: "50%",
         },
     },
     subtitle: {
         marginTop: 32,
         width: "100%",
+        textAlign: "center",
         [theme.breakpoints.down("xs")]: {
             fontSize: 16,
             textAlign: "center",
         },
         [theme.breakpoints.up("lg")]: {
             fontSize: 30,
-            color: "white",
-            maxWidth: "85%",
+            maxWidth: "50%",
         },
         color: "#5F6368",
     },
@@ -71,7 +62,6 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: 16,
         paddingBottom: 16,
         width: 200,
-
         [theme.breakpoints.down("xs")]: {
             display: "block",
             marginLeft: "auto",
@@ -132,7 +122,7 @@ const useStyles = makeStyles((theme) => ({
         marginRight: 8,
     },
     search: {
-        color: theme.palette.primary.light,
+        color: "#000000",
         marginRight: 8,
     },
 
@@ -156,59 +146,50 @@ function Hero() {
     };
 
     return (
-        <div className={classes.container}>
-            <div className={classes.main}>
-                <Container>
-                    <Typography className={classes.title}>
-                        The fastest way to monetize your subscription service
-                    </Typography>
-                    <Typography className={classes.subtitle}>
-                        Paywall is the simplest subscription management platform
-                        for no-code app developers.
-                    </Typography>
-                    {/*<Button
-                        className={classes.button}
-                        size="large"
-                        color="primary"
-                        variant="contained"
-                        onClick={handleClick}
-                    >
-                        TRY FOR FREE
-                    </Button>*/}
+        <div
+            className={classes.main}
+            style={{ backgroundImage: "assets/images/screenshot.png" }}
+        >
+            <Typography className={classes.title}>
+                The fastest way to monetize your subscription service
+            </Typography>
+            <Typography className={classes.subtitle}>
+                Paywall is the simplest subscription management platform for
+                no-code app developers.
+            </Typography>
+            {/*<Button
+                    className={classes.button}
+                    size="large"
+                    color="primary"
+                    variant="contained"
+                    onClick={handleClick}
+                >
+                    TRY FOR FREE
+                </Button>*/}
 
-                    <Paper className={classes.emailAddressPaper} elevation={1}>
-                        <Input
-                            placeholder="Your email address"
-                            className={classes.search}
-                            disableUnderline={true}
-                            fullWidth={true}
-                            value={searchText}
-                            onChange={handleSearch}
-                        />
-
-                        <Button
-                            className={classes.subscribe}
-                            variant="contained"
-                            color="primary"
-                        >
-                            <Icon className={classes.searchIcon}>mail</Icon>
-                            <span
-                                id="subscribeText"
-                                className={classes.subscribeText}
-                            >
-                                Subscribe
-                            </span>
-                        </Button>
-                    </Paper>
-                </Container>
-            </div>
-            <div className={classes.screenshot}>
-                <img
-                    className={classes.media}
-                    src="assets/images/screenshot.png"
-                    alt="Screenshot"
+            <Paper className={classes.emailAddressPaper} elevation={1}>
+                <Input
+                    placeholder="Your email address"
+                    className={classes.search}
+                    disableUnderline={true}
+                    fullWidth={true}
+                    value={searchText}
+                    variant="outlined"
+                    onChange={handleSearch}
                 />
-            </div>
+
+                <Button
+                    className={classes.subscribe}
+                    variant="contained"
+                    color="primary"
+                    background="linear-gradient(to right bottom, #430089, #82ffa1)"
+                >
+                    <Icon className={classes.searchIcon}>mail</Icon>
+                    <span id="subscribeText" className={classes.subscribeText}>
+                        Subscribe
+                    </span>
+                </Button>
+            </Paper>
         </div>
     );
 }
