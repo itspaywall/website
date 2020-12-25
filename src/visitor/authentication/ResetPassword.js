@@ -75,7 +75,7 @@ function ResetPassword(props) {
     const canSubmit = () => false;
 
     useEffect(() => {
-        document.title = "Reset Password | Hubble Subscriptions";
+        document.title = "Reset Password | Paywall";
     }, []);
 
     return (

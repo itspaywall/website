@@ -70,7 +70,7 @@ function Register(props) {
     const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
-        document.title = "Register | Hubble Subscriptions";
+        document.title = "Register | Paywall";
     }, []);
 
     return (

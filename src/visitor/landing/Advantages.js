@@ -5,8 +5,8 @@ import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 
 import InsightsIcon from "@material-ui/icons/DonutLarge";
-import BuildIcon from "@material-ui/icons/Business";
-import MobileIcon from "@material-ui/icons/MobileFriendly";
+import PlanIcon from "@material-ui/icons/LocalOffer";
+import PaymentsIcon from "@material-ui/icons/MonetizationOn";
 
 import Advantage from "./Advantage";
 
@@ -83,22 +83,22 @@ const useStyles = makeStyles((theme) => ({
 
 const list = [
     {
-        title: "Actionable Insights",
+        title: "Create your plans",
         subtitle:
-            "Get better insights into your customers behavior through cohort analytics.",
+            "Give your service a name and options. That's all you need to sell online.",
+        icon: PlanIcon,
+    },
+    {
+        title: "Embed payments page",
+        subtitle:
+            "Paywall generates a custom payments page for you, which you can embed in your application.",
         icon: InsightsIcon,
     },
     {
-        title: "Hosted Payment Pages",
+        title: "Collect payments",
         subtitle:
-            "Accept payments online, without writing a single line of code. Your business can go online immediately.",
-        icon: BuildIcon,
-    },
-    {
-        title: "Mobile First",
-        subtitle:
-            "Not in front of your laptop? No worries, we got you covered! Get instant access to your data from our iOS and Android apps.",
-        icon: MobileIcon,
+            "Your business can go online immediately. Accept payments online, without writing a single line of code.",
+        icon: PaymentsIcon,
     },
 ];
 
@@ -120,10 +120,9 @@ function Advantages() {
                         color="inherit"
                         className={classes.subtitle}
                     >
-                        The primary goal of your subscription business is to
-                        quickly enter the market. You shouldn't spend too much
-                        time on managing your subscriptions. Paywall allows you
-                        to easily integrate subscription lifecycle management in
+                        The primary goal of your subscription business should be
+                        to quickly enter the market. Paywall allows you to
+                        easily integrate subscription lifecycle management in
                         less than five minutes!
                     </Typography>
                 </div>

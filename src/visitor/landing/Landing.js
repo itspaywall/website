@@ -15,7 +15,7 @@ function Landing() {
     const classes = useStyles();
 
     useEffect(() => {
-        document.title = "Hubble Subscriptions";
+        document.title = "Paywall";
     }, []);
 
     return (

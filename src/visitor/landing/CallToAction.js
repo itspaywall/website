@@ -68,7 +68,7 @@ function CallToAction() {
         <div className={classes.root}>
             <Container>
                 <Typography className={classes.title}>
-                    Try Hubble Subscriptions for free today
+                    Try Paywall for free today
                 </Typography>
                 <Typography className={classes.subtitle}>
                     Integrating it into your business and application is easy.

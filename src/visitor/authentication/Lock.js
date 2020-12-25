@@ -75,7 +75,7 @@ function Lock(props) {
     const canSubmit = () => false;
 
     useEffect(() => {
-        document.title = "Session Locked | Hubble Subscriptions";
+        document.title = "Session Locked | Paywall";
     }, []);
 
     return (
