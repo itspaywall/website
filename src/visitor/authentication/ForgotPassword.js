@@ -73,7 +73,7 @@ function ForgotPassword(props) {
     const classes = useStyles();
 
     useEffect(() => {
-        document.title = "Recover your account | Hubble Subscriptions";
+        document.title = "Recover your account | Paywall";
     }, []);
 
     const canSubmit = () => false;

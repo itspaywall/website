@@ -239,7 +239,7 @@ function MainFooter() {
                         />
                     </p>
                     <Typography className={classes.about}>
-                        Hubble offers an easy-to-integrate subscription
+                        Paywall offers an easy-to-integrate subscription
                         management service to startups and businesses, with a
                         variety of customer acquisition and retention tools.
                     </Typography>
@@ -303,7 +303,7 @@ function MainFooter() {
                 </Grid>
                 <Grid item={true} lg={12}>
                     <Typography className={classes.copyright}>
-                        &copy; 2020 Hubble, Inc.
+                        &copy; 2020 Paywall, Inc.
                     </Typography>
                 </Grid>
             </Grid>

@@ -72,7 +72,7 @@ function Login(props) {
     const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
-        document.title = "Login | Hubble Subscriptions";
+        document.title = "Login | Paywall";
     }, []);
 
     return (

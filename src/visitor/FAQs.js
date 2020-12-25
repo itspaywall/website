@@ -28,36 +28,36 @@ import Typography from "@material-ui/core/Typography";
 const faq = [
     {
         id: 1,
-        title: "Starting with Hubble",
+        title: "Starting with Paywall",
         questions: [
             {
                 id: 1,
-                question: "How do I get started with Hubble?",
+                question: "How do I get started with Paywall?",
                 answer:
-                    "You can begin using Hubble today. You can request for a demo " +
-                    "or create a free account to experience Hubble. When " +
+                    "You can begin using Paywall today. You can request for a demo " +
+                    "or create a free account to experience Paywall. When " +
                     "you first sign up, you will be take through a brief tutorial which " +
                     "will allow you to explore our platform. Our trial provides " +
                     "access to our features and functionality so you can ensure that " +
-                    "Hubble works for your business.",
+                    "Paywall works for your business.",
             },
             {
                 id: 2,
-                question: "How do Hubble's pricing plans work?",
+                question: "How do Paywall's pricing plans work?",
                 answer:
-                    "Hubble's pricing plans charge on a per-transaction basis, " +
+                    "Paywall's pricing plans charge on a per-transaction basis, " +
                     "percentage of revenue, and a base monthly fee. A per-transaction " +
                     "fee will be assessed against successful payments, refunds, voids, " +
-                    "authorizations, and declines. Hubble does not charge for " +
+                    "authorizations, and declines. Paywall does not charge for " +
                     "transactions that failed due to a gateway connection issue.",
             },
             {
                 id: 3,
-                question: "Is there a setup fee to use Hubble?",
+                question: "Is there a setup fee to use Paywall?",
                 answer:
-                    "Hubble does not charge a setup fee. You may sign up and " +
-                    "use Hubble for free at any time. We only " +
-                    "charge our fees once you sign up for a Hubble subscription " +
+                    "Paywall does not charge a setup fee. You may sign up and " +
+                    "use Paywall for free at any time. We only " +
+                    "charge our fees once you sign up for a Paywall subscription " +
                     "and are ready to start collecting money.",
             },
             {
@@ -75,9 +75,9 @@ const faq = [
             },
             {
                 id: 5,
-                question: "Does Hubble require a long-term contract?",
+                question: "Does Paywall require a long-term contract?",
                 answer:
-                    "Hubble is a month-to-month service so there are no long-term " +
+                    "Paywall is a month-to-month service so there are no long-term " +
                     "commitments, and you can cancel at anytime.",
             },
         ],
@@ -91,7 +91,7 @@ const faq = [
                 question:
                     "Can I create subscriptions without billing information?",
                 answer:
-                    "Hubble is designed to handle paid subscriptions, so an " +
+                    "Paywall is designed to handle paid subscriptions, so an " +
                     "account must have billing information before a subscription " +
                     "(fully discounted, or free subscriptions) may be created. " +
                     "However, you can create subscription plans that do not " +
@@ -105,7 +105,7 @@ const faq = [
                     "What happens to subscribers that subscribe to a plan " +
                     "if I change the price or delete the plan?",
                 answer:
-                    "Hubble supports price grandfathering. When a subscription " +
+                    "Paywall supports price grandfathering. When a subscription " +
                     "plan changes, your existing subscribers will remain " +
                     "grandfathered in at the terms they agreed to. New " +
                     "subscribers will be subscribed with the updated pricing " +
@@ -127,7 +127,7 @@ const faq = [
             },
             {
                 id: 4,
-                question: "Does Hubble support one-time transactions as well?",
+                question: "Does Paywall support one-time transactions as well?",
                 answer:
                     "Yes. You can submit one-time charges for immediate " +
                     "collection. Charges can be submitted at any time, " +
@@ -139,7 +139,7 @@ const faq = [
                 question: "Can I accept check payments?",
                 answer:
                     "Yes. You can use the Manual Payments feature to log " +
-                    "check payments in Hubble.",
+                    "check payments in Paywall.",
             },
         ],
     },
@@ -299,7 +299,7 @@ function FAQs(props) {
     const faqs = getFilteredArray(data, searchText);
 
     useEffect(() => {
-        document.title = "FAQs | Hubble Subscriptions";
+        document.title = "FAQs | Paywall";
     }, []);
 
     return (

@@ -27,8 +27,9 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     feature: {
-        padding: 32,
-
+        padding: 8,
+        paddingLeft: 32,
+        paddingRight: 32,
         [theme.breakpoints.down("sm")]: {
             padding: 0,
             paddingTop: 24,
@@ -65,6 +66,16 @@ const list = [
         title: "REST APIs",
         subtitle:
             "Implement custom solutions that create plans, send invoices, upgrade subscriptions, and much more using our REST APIs.",
+    },
+    {
+        title: "Actionable Insights",
+        subtitle:
+            "Get better insights into your customers behavior through cohort analytics.",
+    },
+    {
+        title: "Mobile First",
+        subtitle:
+            "Not in front of your laptop? No worries, we got you covered! Get instant access to your data from our iOS and Android apps.",
     },
 ];
 
