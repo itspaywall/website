@@ -5,6 +5,16 @@ import { Typography, Container } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Hidden from "@material-ui/core/Hidden";
 
+import BillingModelIcon from "@material-ui/icons/Receipt";
+import PaymentIcon from "@material-ui/icons/Payment";
+import NoVendorLockInIcon from "@material-ui/icons/NoEncryption";
+import MultipleCurrenciesIcon from "@material-ui/icons/Euro";
+import TrialPeriodIcon from "@material-ui/icons/HourglassEmpty";
+import ActionableInsightsIcon from "@material-ui/icons/DonutLarge";
+import MobileFirstIcon from "@material-ui/icons/PhoneAndroid";
+import SetupFeeIcon from "@material-ui/icons/MonetizationOn";
+import RestIcon from "@material-ui/icons/Http";
+
 const useStyles = makeStyles((theme) => ({
     root: {
         marginTop: 128,
@@ -42,40 +52,54 @@ const list = [
         title: "Billing Models",
         subtitle:
             "Charge your customers a fixed recurring charge, or based on the number of entities purchased or consumption.",
+        icon: BillingModelIcon,
     },
     {
-        title: "No Vendor Lock-In",
+        title: "Hosted Payments Page",
         subtitle:
-            "If your business requirements grow beyond Paywall, you can tweak our source code to satisfy your needs.",
+            "Accept payments online, without writing a single line of code. Your business can go online immediately.",
+        icon: PaymentIcon,
     },
     {
         title: "Multiple Currencies",
         subtitle: "Offer your solutions to customers around the world.",
+        icon: MultipleCurrenciesIcon,
     },
     {
         title: "Trial Period",
         subtitle:
             "Allow your customers to experience your plans for a trial period.",
+        icon: TrialPeriodIcon,
     },
     {
         title: "Setup Fee",
         subtitle:
             "Charge your customers a one time fee at the beginning of the subscription.",
+        icon: SetupFeeIcon,
     },
     {
         title: "REST APIs",
         subtitle:
             "Implement custom solutions that create plans, send invoices, upgrade subscriptions, and much more using our REST APIs.",
+        icon: RestIcon,
     },
     {
         title: "Actionable Insights",
         subtitle:
             "Get better insights into your customers behavior through cohort analytics.",
+        icon: ActionableInsightsIcon,
     },
     {
         title: "Mobile First",
         subtitle:
             "Not in front of your laptop? No worries, we got you covered! Get instant access to your data from our iOS and Android apps.",
+        icon: MobileFirstIcon,
+    },
+    {
+        title: "No Vendor Lock-In",
+        subtitle:
+            "If your business requirements grow beyond Paywall, you can tweak our source code to satisfy your needs.",
+        icon: NoVendorLockInIcon,
     },
 ];
 
@@ -105,7 +129,7 @@ function Features() {
                             <Feature
                                 title={feature.title}
                                 subtitle={feature.subtitle}
-                                cover={feature.cover}
+                                icon={feature.icon}
                             />
                         </Grid>
                     ))}
