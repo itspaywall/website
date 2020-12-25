@@ -149,8 +149,21 @@ const useStyles = makeStyles((theme) => ({
     root: {
         width: "100%",
     },
+    "@keyframes gradient": {
+        "0%": {
+            backgroundPosition: "0% 50%",
+        },
+        "50%": {
+            backgroundPosition: "100% 50%",
+        },
+        "100%": {
+            backgroundPosition: "0% 50%",
+        },
+    },
     header: {
         background: "linear-gradient(45deg, #2196F3 30%, #3F51B5 90%)",
+        backgroundSize: "200% 200%",
+        animation: "$gradient 5s ease infinite",
         color: theme.palette.primary.contrastText,
         height: 300,
         padding: 32,

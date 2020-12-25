@@ -6,10 +6,20 @@ import Typography from "@material-ui/core/Typography";
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
+    "@keyframes gradient": {
+        "0%": {
+            backgroundPosition: "0% 50%",
+        },
+        "50%": {
+            backgroundPosition: "100% 50%",
+        },
+        "100%": {
+            backgroundPosition: "0% 50%",
+        },
+    },
     root: {
-        background:
-            "linear-gradient(90deg, rgba(29,161,242,1) 0%, rgba(222,0,255,1) 100%)",
-        backgroundSize: "100% 100%",
+        background: "linear-gradient(45deg, #2196F3 30%, #3F51B5 90%)",
+        backgroundSize: "200% 200%",
         animation: "$gradient 5s ease infinite",
         color: theme.palette.primary.contrastText,
         width: "100%",
