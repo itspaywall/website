@@ -9,6 +9,11 @@ import {
 } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { useHistory } from "react-router-dom";
+import firebase from "firebase";
+import firebaseConfig from "../../firebaseConfig";
+
+const paywallFirebase = firebase.initializeApp(firebaseConfig);
+const MailingList = paywallFirebase.firestore();
 
 const useStyles = makeStyles((theme) => ({
     "@keyframes gradient": {
@@ -119,9 +124,19 @@ function Hero() {
     const history = useHistory();
     const handleClick = () => history.push("/register");
 
-    const [searchText, setSearchText] = useState("");
-    const handleSearch = (event) => {
-        setSearchText(event.target.value);
+    const [emailAddress, setEmailAddress] = useState("");
+
+    const handleEmailAddressChange = (event) => {
+        setEmailAddress(event.target.value);
+    };
+
+    const handleEmailAddressSubmit = (event) => {
+        if (emailAddress) {
+            MailingList.collection("emails").add({
+                email: emailAddress,
+            });
+        }
+        setEmailAddress("");
     };
 
     return (
@@ -150,15 +165,16 @@ function Hero() {
                         className={classes.search}
                         disableUnderline={true}
                         fullWidth={true}
-                        value={searchText}
+                        value={emailAddress}
                         variant="outlined"
-                        onChange={handleSearch}
+                        onChange={handleEmailAddressChange}
                     />
 
                     <Button
                         className={classes.subscribe}
                         variant="contained"
                         color="primary"
+                        onClick={handleEmailAddressSubmit}
                     >
                         <Icon className={classes.searchIcon}>mail</Icon>
                         <span
